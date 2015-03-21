@@ -15,7 +15,8 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    center.cpp
+    center.cpp \
+    route.cpp
 
 HEADERS  += mainwindow.h \
     center.h \

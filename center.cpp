@@ -4,7 +4,7 @@ Route Center::getRoute() const {
     return this->routes;
 }
 
-// Just another comment...
+// Just another comment....
 Schedule Center::getSchedule() const {
     return this->timetable;
 }

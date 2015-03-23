@@ -14,7 +14,7 @@ public:
     ~Driver() {}
     unsigned int getAge() const;
     Position getPosition() const;
-    virtual QString getContact() const;
+    virtual QString getContact() const override;
 private:
     Position position;
     QString email;

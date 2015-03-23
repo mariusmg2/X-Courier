@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     Schedule schedule;
     //Driver driver;
     Package package;
-    //Client client;
+    Client client;
     Position position;
 
     w.show();

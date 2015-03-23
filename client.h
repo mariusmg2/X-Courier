@@ -8,7 +8,7 @@
 class Client: public Person {
 public:
     Client(): Person(), package(Package()), phone(QString()) {}
-    Client(QString &name, bool gender, QDate &born_date, Package& package, QString& phone):
+    Client(const QString &name, const bool gender, const QDate &born_date, const Package& package, const QString& phone):
         Person(name, gender, born_date), package(package), phone(phone) {}
     ~Client() {}
     Package getPackage() const;
@@ -19,4 +19,3 @@ private:
 };
 
 #endif // CLIENT_H
-

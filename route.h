@@ -6,7 +6,7 @@
 class Route {
 public:
     Route(): source(QString()), destination(QString()) {}
-    Route(QString& source, QString destination): source(source), destination(destination) {}
+    Route(const QString& source, const QString destination): source(source), destination(destination) {}
     ~Route() {}
     QString getSource() const;
     QString getDestination() const;

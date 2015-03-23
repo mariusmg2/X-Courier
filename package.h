@@ -6,7 +6,7 @@
 
 class Package {
 public:
-    Package(): weight(0), code(0), status(QString()), type(PkgType::fragile) {}
+    Package(): weight(0), code(0), status(QString()), type(PkgType::undefined) {}
     Package(unsigned int weight, unsigned int code, QString& status, PkgType& type):
         weight(weight), code(code), status(status), type(type) {}
     ~Package() {}

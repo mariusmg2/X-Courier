@@ -12,7 +12,7 @@ public:
            QString& email, QString& phone): Person(name, gender, born_date),
         position(position), email(email), phone(phone) {}
     ~Driver() {}
-    virtual unsigned int getAge() const override;
+    virtual unsigned int getAge() const;
     Position getPosition() const;
 private:
     Position position;

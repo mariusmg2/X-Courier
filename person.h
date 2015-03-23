@@ -15,7 +15,7 @@ public:
     QString getName() const;
     bool getGender() const;
     unsigned int getAge() const;
-    virtual getContact() const = 0;
+    virtual QString getContact() const = 0;
 private:
     QString name;
     bool gender;

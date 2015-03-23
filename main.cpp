@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     Center center;
     Route route;
     Schedule schedule;
-    //Driver driver;
+    Driver driver;
     Package package;
     Client client;
     Position position;

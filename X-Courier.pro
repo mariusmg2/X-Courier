@@ -23,6 +23,7 @@ HEADERS  += mainwindow.h \
     schedule.h \
     route.h \
     transtype.h \
-    person.h
+    person.h \
+    driver.h
 
 FORMS    += mainwindow.ui

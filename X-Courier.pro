@@ -24,6 +24,7 @@ HEADERS  += mainwindow.h \
     route.h \
     transtype.h \
     person.h \
-    driver.h
+    driver.h \
+    position.h
 
 FORMS    += mainwindow.ui

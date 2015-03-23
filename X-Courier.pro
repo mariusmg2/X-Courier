@@ -25,6 +25,9 @@ HEADERS  += mainwindow.h \
     transtype.h \
     person.h \
     driver.h \
-    position.h
+    position.h \
+    client.h \
+    package.h \
+    pkgtype.h
 
 FORMS    += mainwindow.ui

@@ -3,6 +3,9 @@
 #include "schedule.h"
 #include "route.h"
 #include "driver.h"
+#include "package.h"
+#include "client.h"
+#include "position.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -14,6 +17,9 @@ int main(int argc, char *argv[])
     Route route;
     Schedule schedule;
     //Driver driver;
+    Package package;
+    //Client client;
+    Position position;
 
     w.show();
 

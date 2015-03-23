@@ -1,7 +1,9 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
+#include "QString"
 #include "person.h"
+#include "package.h"
 
 class Client: public Person {
 public:

@@ -7,10 +7,8 @@
 
 class Person {
 public:
-    Person(): name(QString()), gender(false),
-        born_date(QDate::currentDate().year(), QDate::currentDate().month(), QDate::currentDate().day()) {}
-    Person(QString& name, bool gender, QDate& born_date):
-        name(name), gender(gender), born_date(born_date) {}
+    Person(): name(QString()), gender(false), born_date(QDate::currentDate()) {}
+    Person(QString& name, bool gender, QDate& born_date): name(name), gender(gender), born_date(born_date) {}
     ~Person() {}
     QString getName() const;
     bool getGender() const;
@@ -24,4 +22,3 @@ private:
 };
 
 #endif // PERSON_H
-

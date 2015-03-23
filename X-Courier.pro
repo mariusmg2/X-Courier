@@ -20,7 +20,8 @@ SOURCES += main.cpp\
     client.cpp \
     person.cpp \
     driver.cpp \
-    package.cpp
+    package.cpp \
+    position.cpp
 
 HEADERS  += mainwindow.h \
     center.h \

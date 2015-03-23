@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     center.cpp \
     route.cpp \
     client.cpp \
-    person.cpp
+    person.cpp \
+    driver.cpp
 
 HEADERS  += mainwindow.h \
     center.h \

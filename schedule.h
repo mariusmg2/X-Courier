@@ -6,9 +6,8 @@
 
 class Schedule {
 public:
-    Schedule(): from(QDate::currentDate().year(), QDate::currentDate().month(), QDate::currentDate().year()),
-        to(QDate::currentDate().year(), QDate::currentDate().month(), QDate::currentDate().year()) {}
-    Schedule(QDate& from, QDate& to): from(from), to(to) {}
+    Schedule(): from(QDateTime()), to(QDateTime()) {}
+    Schedule(QDateTime& from, QDateTime& to): from(from), to(to) {}
     ~Schedule() {}
     QString getScheduleToString() const;
 private:

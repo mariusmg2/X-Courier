@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     person.cpp \
     driver.cpp \
     package.cpp \
-    position.cpp
+    position.cpp \
+    schedule.cpp
 
 HEADERS  += mainwindow.h \
     center.h \

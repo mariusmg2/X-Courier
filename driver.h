@@ -8,8 +8,8 @@
 class Driver: public Person {
 public:
     Driver(): Person(), position(Position()), email(QString()), phone(QString()) {}
-    Driver(QString& name, bool gender, QDate& born_date, Position& position,
-           QString& email, QString& phone): Person(name, gender, born_date),
+    Driver(const QString& name, const bool gender, const QDate& born_date, const Position& position,
+           const QString& email, const QString& phone): Person(name, gender, born_date),
         position(position), email(email), phone(phone) {}
     ~Driver() {}
     Position getPosition() const;

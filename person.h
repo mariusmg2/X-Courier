@@ -14,6 +14,7 @@ public:
     ~Person() {}
     QString getName() const;
     bool getGender() const;
+    QString getGenderAsString() const;
     unsigned int getAge() const;
     virtual QString getContact() const = 0;
 private:

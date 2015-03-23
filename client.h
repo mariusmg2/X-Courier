@@ -1,7 +1,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include "QString"
+#include <QString>
 #include "person.h"
 #include "package.h"
 
@@ -12,7 +12,6 @@ public:
         Person(name, gender, born_date), package(package), phone(phone) {}
     ~Client() {}
     Package getPackage() const;
-    unsigned int getAge() const;
     virtual QString getContact() const;
 private:
     Package package;

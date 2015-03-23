@@ -7,7 +7,7 @@
 class Package {
 public:
     Package(): weight(0), code(0), status(QString()), type(PkgType::undefined) {}
-    Package(unsigned int weight, unsigned int code, QString& status, PkgType& type):
+    Package(const unsigned int weight, const unsigned int code, const QString& status, const PkgType& type):
         weight(weight), code(code), status(status), type(type) {}
     ~Package() {}
     unsigned int getWeight() const;

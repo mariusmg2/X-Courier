@@ -7,7 +7,7 @@
 class Schedule {
 public:
     Schedule(): from(QDate::currentDate(), QTime::currentTime()), to(QDate::currentDate(), QTime::currentTime()) {}
-    Schedule(QDateTime& from, QDateTime& to): from(from), to(to) {}
+    Schedule(const QDateTime& from, const QDateTime& to): from(from), to(to) {}
     ~Schedule() {}
     QString getScheduleToString() const;
 private:

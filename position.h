@@ -6,7 +6,7 @@
 class Position {
 public:
     Position(): longitude(0), latitude(0) {}
-    Position(int longitude, int latitude): longitude(longitude), latitude(latitude) {}
+    Position(const int longitude, const int latitude): longitude(longitude), latitude(latitude) {}
     ~Position() {}
     QString getPositionAsString() const;
     int getLongitude() const;

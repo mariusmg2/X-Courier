@@ -1,4 +1,4 @@
-#include <QDate>
+#include <QDateTime>
 #include <QString>
 
 #ifndef SCHEDULE_H
@@ -12,8 +12,8 @@ public:
     ~Schedule() {}
     QString getScheduleToString() const;
 private:
-    QDate from;
-    QDate to;
+    QDateTime from;
+    QDateTime to;
 };
 
 #endif // SCHEDULE_H

@@ -8,11 +8,11 @@
 /**
  * @brief The Client class
  *
- * This class is used for representing one person.
+ * This class is used for representing one person, it inherits Person base class.
  *
- * Methods:
- *  - Package getPackage() const.
- *  - virtual QString getContact() const override.
+ * Public methods:
+ *  Package getPackage() const.
+ *  virtual QString getContact() const override.
  */
 
 class Client: public Person {

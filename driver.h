@@ -5,6 +5,16 @@
 #include "position.h"
 #include <QString>
 
+/**
+ * @brief The Driver class
+ *
+ * This class is used for representing a driver person, it inherits Person base class.
+ *
+ * Methods:
+ *  Position getPosition() const;
+    virtual QString getContact() const override;
+ */
+
 class Driver: public Person {
 public:
     Driver(): Person(), position(Position()), email(QString()), phone(QString()) {}

@@ -5,6 +5,18 @@
 #include <QDate>
 #include <iostream>
 
+/**
+ * @brief The Person class
+ *
+ * This class is abstract (you can't make objects of this type), and is used to represent general Person characteristics.
+ *
+ * Public methods:
+ *  QString getName() const;
+ *  bool getGender() const;
+ *  QString getGenderAsString() const;
+ *  unsigned int getAge() const;
+ */
+
 class Person {
 public:
     Person(): name(QString()), gender(false), born_date(QDate::currentDate()) {}

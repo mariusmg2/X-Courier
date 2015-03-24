@@ -4,6 +4,15 @@
 #include <QDateTime>
 #include <QString>
 
+/**
+ * @brief The Schedule class
+ *
+ * This class is used for defining a Center schedule (one opening time, and one closing time).
+ *
+ * Public methods:
+ *  QString getScheduleToString() const;
+ */
+
 class Schedule {
 public:
     Schedule(): from(QDate::currentDate(), QTime::currentTime()), to(QDate::currentDate(), QTime::currentTime()) {}

@@ -3,6 +3,17 @@
 
 #include <QString>
 
+/**
+ * @brief The Position class
+ *
+ * This class is used to define the drivers position (on a map).
+ *
+ * Public methods:
+ *  QString getPositionAsString() const;
+ *  int getLongitude() const;
+ *  int getLatitude() const;
+ */
+
 class Position {
 public:
     Position(): longitude(0), latitude(0) {}

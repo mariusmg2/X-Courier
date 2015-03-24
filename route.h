@@ -3,6 +3,16 @@
 
 #include <QString>
 
+/**
+ * @brief The Route class
+ *
+ * This class is used to define a route (one source point, and one destination point).
+ *
+ * Public methods:
+ *  QString getSource() const;
+ *  QString getDestination() const;
+ */
+
 class Route {
 public:
     Route(): source(QString()), destination(QString()) {}

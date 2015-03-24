@@ -12,7 +12,7 @@
  *
  * This class is used for representing one transport center.
  *
- * Methods:
+ * Public methods:
  *  Route getRoute() const.
  *  QVector<TransType> getTransportTypes() const.
  *  Schedule getSchedule() const.

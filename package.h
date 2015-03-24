@@ -4,6 +4,17 @@
 #include <QString>
 #include "pkgtype.h"
 
+/**
+ * @brief The Package class
+ *
+ * This class is used for representing a package, package that will be sent by a *Client*, and delivered by a *Driver*.
+ *
+ * Public methods:
+ *  unsigned int getWeight() const;
+ *  unsigned int getCode() const;
+ *  QString getStatus() const;
+ */
+
 class Package {
 public:
     Package(): weight(0), code(0), status(QString()), type(PkgType::undefined) {}

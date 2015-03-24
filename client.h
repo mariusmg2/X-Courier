@@ -5,6 +5,16 @@
 #include "person.h"
 #include "package.h"
 
+/**
+ * @brief The Client class
+ *
+ * This class is used for representing one person.
+ *
+ * Methods:
+ *  - Package getPackage() const.
+ *  - virtual QString getContact() const override.
+ */
+
 class Client: public Person {
 public:
     Client(): Person(), package(Package()), phone(QString()) {}

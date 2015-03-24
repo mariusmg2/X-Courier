@@ -7,6 +7,17 @@
 #include <QString>
 #include <QVector>
 
+/**
+ * @brief The Center class
+ *
+ * This class is used for representing one transport center.
+ *
+ * Methods:
+ *  Route getRoute() const.
+ *  QVector<TransType> getTransportTypes() const.
+ *  Schedule getSchedule() const.
+ */
+
 class Center {
 public:
     Center(): city(QString()), routes(Route()), transport_types(QVector<TransType>()), timetable(Schedule()) {}

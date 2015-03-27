@@ -11,3 +11,7 @@ QString Route::getDestination() const {
 unsigned int Route::getDistance() const {
     return this->distance;
 }
+
+unsigned int Route::getTotalPrice() const {
+    return this->totalPrice;
+}

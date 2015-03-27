@@ -15,16 +15,20 @@
 
 class Route {
 public:
-    Route(): source(QString()), destination(QString()) {}
-    Route(const QString& source, const QString destination): source(source), destination(destination) {}
+    Route(): source(QString()), destination(QString()), distance(0), pricePerKm(0), totalPrice(0) {}
+    Route(const QString& source, const QString& destination, int distance, int pricePerKm = 2): source(source),
+        destination(destination), distance(distance), pricePerKm(pricePerKm), totalPrice(this->distance * this->pricePerKm) {}
     ~Route() {}
     QString getSource() const;
     QString getDestination() const;
     unsigned int getDistance() const;
+    unsigned int getTotalPrice() const;
 private:
     QString source;
     QString destination;
     unsigned int distance;
+    unsigned int pricePerKm;
+    unsigned int totalPrice;
 };
 
 #endif // ROUTE_H

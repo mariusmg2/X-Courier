@@ -1,6 +1,6 @@
 #include "center.h"
 
-Route Center::getRoute() const {
+QVector<Route> Center::getRoutes() const {
     return this->routes;
 }
 

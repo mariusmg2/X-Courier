@@ -13,5 +13,5 @@ unsigned int Route::getDistance() const {
 }
 
 unsigned int Route::getTotalPrice() const {
-    return this->totalPrice;
+    return this->distance * this->pricePerKm;
 }

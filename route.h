@@ -15,9 +15,9 @@
 
 class Route {
 public:
-    Route(): source(QString()), destination(QString()), distance(0), pricePerKm(0), totalPrice(0) {}
+    Route(): source(QString()), destination(QString()), distance(0), pricePerKm(0) {}
     Route(const QString& source, const QString& destination, int distance, int pricePerKm = 2): source(source),
-        destination(destination), distance(distance), pricePerKm(pricePerKm), totalPrice(this->distance * this->pricePerKm) {}
+        destination(destination), distance(distance), pricePerKm(pricePerKm) {}
     ~Route() {}
     QString getSource() const;
     QString getDestination() const;
@@ -28,7 +28,6 @@ private:
     QString destination;
     unsigned int distance;
     unsigned int pricePerKm;
-    unsigned int totalPrice;
 };
 
 #endif // ROUTE_H

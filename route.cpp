@@ -7,3 +7,7 @@ QString Route::getSource() const {
 QString Route::getDestination() const {
     return this->destination;
 }
+
+unsigned int Route::getDistance() const {
+    return this->distance;
+}

@@ -6,13 +6,15 @@
 #include "package.h"
 #include "client.h"
 #include "position.h"
+
 #include <QApplication>
+#include <QSharedPointer>
 #include <iostream>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+    QSharedPointer<MainWindow> w(new MainWindow);
 
     Route route = Route("Timisoara", "Arad", 100);
     Route route2 = Route("Arad", "Caransebes", 320);
@@ -36,7 +38,7 @@ int main(int argc, char *argv[])
     Client client;
     Position position;
 
-    w.show();
+    w->show();
 
     return a.exec();
 }

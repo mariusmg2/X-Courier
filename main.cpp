@@ -9,6 +9,7 @@
 
 #include <QApplication>
 #include <QSharedPointer>
+#include <QString>
 #include <iostream>
 
 int main(int argc, char *argv[])

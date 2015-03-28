@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLineEdit>
+#include <QString>
 
 namespace Ui {
 class MainWindow;
@@ -14,9 +16,10 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-
 private:
     Ui::MainWindow *ui;
+    QLineEdit *fname_line;
+    QLineEdit *lname_edit;
 };
 
 #endif // MAINWINDOW_H

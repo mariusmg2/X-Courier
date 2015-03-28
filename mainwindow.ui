@@ -2,16 +2,31 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>549</width>
-    <height>416</height>
+    <width>550</width>
+    <height>370</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>550</width>
+    <height>370</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>550</width>
+    <height>370</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>X-Courier</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QWidget" name="horizontalLayoutWidget">
@@ -20,7 +35,7 @@
       <x>10</x>
       <y>20</y>
       <width>261</width>
-      <height>321</height>
+      <height>261</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="leftLayout">
@@ -29,6 +44,121 @@
        <property name="title">
         <string>Client details</string>
        </property>
+       <widget class="QLabel" name="client_fname">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>60</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>First name</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="client_lname">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>90</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Last name</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="client_pkg_destination">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>180</y>
+          <width>121</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Package destination</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="client_email">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>120</y>
+          <width>59</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Email</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="client_phone">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>150</y>
+          <width>91</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Phone number</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="client_fname_line">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>60</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="client_lname_line">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>90</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="client_email_line">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>120</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="client_phone_line">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>150</y>
+          <width>131</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="client_destination_combo">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>180</y>
+          <width>101</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
      </item>
     </layout>
@@ -46,7 +176,197 @@
      <item>
       <widget class="QGroupBox" name="recipientBox">
        <property name="title">
-        <string>Client details</string>
+        <string>Recipient details</string>
+       </property>
+       <widget class="QLineEdit" name="recipient_email_line">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>100</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="recipient_fname_line">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>40</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="recipient_lname_line">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>70</y>
+          <width>151</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="recipient_fname">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>40</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>First name</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="recipient_phone">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>130</y>
+          <width>91</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Phone number</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="recipient_email">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>100</y>
+          <width>59</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Email</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="recipient_lname">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>70</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Last name</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="recipient_phone_line">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>130</y>
+          <width>131</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>190</y>
+      <width>261</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QGroupBox" name="operatorBox">
+       <property name="title">
+        <string>Package details</string>
+       </property>
+       <widget class="QLabel" name="package_weight">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>101</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Package weight</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="package_type">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>91</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Package type</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="package_weight_line">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>30</y>
+          <width>131</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>60</y>
+          <width>131</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="horizontalLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>290</y>
+      <width>531</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="bottomLayout">
+     <item>
+      <widget class="QPushButton" name="quit">
+       <property name="text">
+        <string>Quit</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="status">
+       <property name="text">
+        <string>Check Status</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="send">
+       <property name="text">
+        <string>Send</string>
        </property>
       </widget>
      </item>
@@ -58,7 +378,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>549</width>
+     <width>550</width>
      <height>19</height>
     </rect>
    </property>

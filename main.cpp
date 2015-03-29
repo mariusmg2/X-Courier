@@ -15,7 +15,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    QSharedPointer<MainWindow> w(new MainWindow);
+    QSharedPointer<MainWindow> w(new MainWindow); // Smart pointer, that when will go out of scope, will release (calling the destructor) the resource.
 
     Route route = Route("Timisoara", "Arad", 100);
     Route route2 = Route("Arad", "Caransebes", 320);

@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     driver.cpp \
     package.cpp \
     position.cpp \
-    schedule.cpp
+    schedule.cpp \
+    packagestatuswindow.cpp
 
 HEADERS  += mainwindow.h \
     center.h \
@@ -34,6 +35,8 @@ HEADERS  += mainwindow.h \
     position.h \
     client.h \
     package.h \
-    pkgtype.h
+    pkgtype.h \
+    packagestatuswindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    packagestatuswindow.ui

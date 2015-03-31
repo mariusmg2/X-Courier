@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "packagestatuswindow.h"
+#include "confirmationwindow.h"
 #include "center.h"
 #include "schedule.h"
 #include "route.h"
@@ -18,6 +19,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     QSharedPointer<MainWindow> w(new MainWindow); // Smart pointer, that when will go out of scope, will release (calling the destructor) the resource.
     PackageStatusWindow p;
+    ConfirmationWindow c;
 
     Route route = Route("Timisoara", "Arad", 100);
     Route route2 = Route("Arad", "Caransebes", 320);
@@ -35,6 +37,8 @@ int main(int argc, char *argv[])
                       i.getDestination() + " Total price: " + QString::number(i.getTotalPrice()) + "\n").toStdString();
     }
 
+    std::cout << ("\nTransit time for Lugoj-Bucuresti is: " + QString::number(route4.getTransitTime()) + "\n").toStdString();
+
     Schedule schedule;
     Driver driver;
     Package package;
@@ -43,6 +47,7 @@ int main(int argc, char *argv[])
 
     w->show();
     p.show();
+    c.show();
 
     return a.exec();
 }

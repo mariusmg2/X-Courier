@@ -23,6 +23,7 @@ public:
     QString getDestination() const;
     unsigned int getDistance() const;
     unsigned int getTotalPrice() const;
+    unsigned int getTransitTime() const;
 private:
     QString source;
     QString destination;

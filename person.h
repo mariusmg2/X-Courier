@@ -19,16 +19,20 @@
 
 class Person {
 public:
-    Person(): name(QString()), gender(false), born_date(QDate::currentDate()) {}
-    Person(const QString& name, const bool gender, const QDate& born_date): name(name), gender(gender), born_date(born_date) {}
+    Person(): firstName(QString()), lastName(QString()), gender(false), born_date(QDate::currentDate()) {}
+    Person(const QString& firstName, QString& lastName, const bool gender, const QDate& born_date):
+        firstName(firstName), lastName(lastName), gender(gender), born_date(born_date) {}
     ~Person() {}
-    QString getName() const;
+    QString getFullName() const;
+    QString getFirstName() const;
+    QString getLastName() const;
     bool getGender() const;
     QString getGenderAsString() const;
     unsigned int getAge() const;
     virtual QString getContact() const = 0;
 private:
-    QString name;
+    QString firstName;
+    QString lastName;
     bool gender;
     QDate born_date;
 };

@@ -5,6 +5,6 @@ Position Driver::getPosition() const {
 }
 
 QString Driver::getContact() const {
-    return "Name: " + this->getName() + "\nGender: " + this->getGenderAsString() + "\nPhone: " + this->phone
+    return "Name: " + this->getFullName() + "\nGender: " + this->getGenderAsString() + "\nPhone: " + this->phone
             + "\nEmail: " + this->email + "\n";
 }

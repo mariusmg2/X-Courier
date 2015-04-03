@@ -5,5 +5,5 @@ Package Client::getPackage() const {
 }
 
 QString Client::getContact() const {
-    return "Name: " + this->getName() + "\nGender: " + this->getGenderAsString() + "\nPhone: " + this->phone + "\n";
+    return "Name: " + this->getFullName() + "\nGender: " + this->getGenderAsString() + "\nPhone: " + this->phone + "\n";
 }

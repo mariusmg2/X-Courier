@@ -1,7 +1,15 @@
 #include "person.h"
 
-QString Person::getName() const {
-    return this->name;
+QString Person::getFirstName() const {
+    return this->firstName;
+}
+
+QString Person::getLastName() const {
+    return this->lastName;
+}
+
+QString Person::getFullName() const {
+    return this->firstName + " " + this->lastName;
 }
 
 QString Person::getGenderAsString() const {

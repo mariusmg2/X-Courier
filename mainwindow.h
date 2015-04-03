@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QLineEdit>
 #include <QString>
+#include <QPushButton>
 
 namespace Ui {
 class MainWindow;
@@ -18,8 +19,6 @@ public:
     ~MainWindow();
 private:
     Ui::MainWindow *ui;
-    QLineEdit *fname_line;
-    QLineEdit *lname_edit;
 };
 
 #endif // MAINWINDOW_H

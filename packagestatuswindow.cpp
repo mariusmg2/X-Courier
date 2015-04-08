@@ -6,6 +6,7 @@ PackageStatusWindow::PackageStatusWindow(QWidget *parent) :
     ui(new Ui::PackageStatusWindow)
 {
     ui->setupUi(this);
+    connect(ui->quitButton, SIGNAL(clicked()), this, SLOT(close()));
 }
 
 PackageStatusWindow::~PackageStatusWindow()

@@ -4,10 +4,7 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(QSharedPointer<Ui::MainWindow>(new Ui::MainWindow)),
-    status_ui(QSharedPointer<PackageStatusWindow>(new PackageStatusWindow)),
-    confirmation_ui(QSharedPointer<ConfirmationWindow>(new ConfirmationWindow))
-    //quit(new QPushButton)
+    ui(QSharedPointer<Ui::MainWindow>(new Ui::MainWindow))
 {
     ui->setupUi(this);
     connect(ui->quit, SIGNAL(clicked()), this, SLOT(close()));
@@ -22,10 +19,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_status_clicked()
 {
+    status_ui = QSharedPointer<PackageStatusWindow>(new PackageStatusWindow);
     status_ui->show();
 }
 
 void MainWindow::on_send_clicked()
 {
+    confirmation_ui = QSharedPointer<ConfirmationWindow>(new ConfirmationWindow);
     confirmation_ui->show();
 }

@@ -22,7 +22,7 @@ public:
         Person(firstName, lastName, gender, born_date), package(package), phone(phone) {}
     ~Client() {}
     Package getPackage() const;
-    virtual QString getContact() const override;
+    QString getContact() const override;
 private:
     Package package;
     QString phone;

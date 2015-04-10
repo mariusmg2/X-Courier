@@ -23,7 +23,7 @@ public:
         position(position), email(email), phone(phone) {}
     ~Driver() {}
     Position getPosition() const;
-    virtual QString getContact() const override;
+    QString getContact() const override;
 private:
     Position position;
     QString email;

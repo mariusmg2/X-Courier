@@ -11,3 +11,7 @@ unsigned int Package::getCode() const {
 QString Package::getStatus() const {
     return this->status;
 }
+
+QString Package::getPackageName() const {
+    return this->packageName;
+}

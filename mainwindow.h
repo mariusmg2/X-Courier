@@ -5,6 +5,10 @@
 #include <QLineEdit>
 #include <QString>
 #include <QPushButton>
+#include <QSharedPointer>
+
+#include "packagestatuswindow.h"
+#include "confirmationwindow.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,8 +21,15 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+private slots:
+    void on_status_clicked();
+    void on_send_clicked();
+
 private:
-    Ui::MainWindow *ui;
+    QSharedPointer<Ui::MainWindow> ui;
+    QSharedPointer<PackageStatusWindow> status_ui;
+    QSharedPointer<ConfirmationWindow> confirmation_ui;
+
 };
 
 #endif // MAINWINDOW_H

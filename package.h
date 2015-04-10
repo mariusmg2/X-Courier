@@ -24,10 +24,12 @@ public:
     unsigned int getWeight() const;
     unsigned int getCode() const;
     QString getStatus() const;
+    QString getPackageName() const;
 private:
     unsigned int weight;
     unsigned int code;
     QString status;
+    QString packageName;
     PkgType type;
 };
 

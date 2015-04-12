@@ -2,6 +2,7 @@
 #define PACKAGESTATUSWINDOW_H
 
 #include <QMainWindow>
+#include <QDebug>
 
 namespace Ui {
 class PackageStatusWindow;
@@ -16,7 +17,7 @@ public:
     ~PackageStatusWindow();
 
 private:
-    Ui::PackageStatusWindow *ui;
+    QSharedPointer<Ui::PackageStatusWindow> ui;
 private slots:
     void recipientCodeTextChanged();
     void recipientNameTextChanged();

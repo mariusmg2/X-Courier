@@ -3,7 +3,7 @@
 
 PackageStatusWindow::PackageStatusWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::PackageStatusWindow)
+    ui(QSharedPointer<Ui::PackageStatusWindow>(new Ui::PackageStatusWindow))
 {
     ui->setupUi(this);
     connect(ui->quitButton, SIGNAL(clicked()), this, SLOT(close()));
@@ -13,7 +13,8 @@ PackageStatusWindow::PackageStatusWindow(QWidget *parent) :
 
 PackageStatusWindow::~PackageStatusWindow()
 {
-    delete ui;
+    qDebug().nospace() << "~PackageStatusWindow()";
+    //ui.clear();
 }
 
 void PackageStatusWindow::recipientCodeTextChanged() {

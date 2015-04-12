@@ -3,7 +3,7 @@
 
 ConfirmationWindow::ConfirmationWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::ConfirmationWindow)
+    ui(QSharedPointer<Ui::ConfirmationWindow>(new Ui::ConfirmationWindow))
 {
     ui->setupUi(this);
     connect(ui->denyButton, SIGNAL(clicked()), this, SLOT(close()));
@@ -11,5 +11,6 @@ ConfirmationWindow::ConfirmationWindow(QWidget *parent) :
 
 ConfirmationWindow::~ConfirmationWindow()
 {
-    delete ui;
+    qDebug().nospace() << "~ConfirmationWindow()";
+    //ui.clear();
 }

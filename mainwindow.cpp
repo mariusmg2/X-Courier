@@ -22,7 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    ui.clear();
+    qDebug().nospace() << "~MainWindow()";
+    //ui.clear();
 }
 
 void MainWindow::on_status_clicked() {

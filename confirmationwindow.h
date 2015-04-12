@@ -2,6 +2,8 @@
 #define CONFIRMATIONWINDOW_H
 
 #include <QMainWindow>
+#include <QSharedPointer>
+#include <QDebug>
 
 namespace Ui {
 class ConfirmationWindow;
@@ -16,7 +18,7 @@ public:
     ~ConfirmationWindow();
 
 private:
-    Ui::ConfirmationWindow *ui;
+    QSharedPointer<Ui::ConfirmationWindow> ui;
 };
 
 #endif // CONFIRMATIONWINDOW_H

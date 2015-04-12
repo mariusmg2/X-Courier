@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::PackageStatusWindow *ui;
+private slots:
+    void recipientCodeTextChanged();
+    void recipientNameTextChanged();
 };
 
 #endif // PACKAGESTATUSWINDOW_H

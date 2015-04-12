@@ -6,9 +6,12 @@
 #include <QString>
 #include <QPushButton>
 #include <QSharedPointer>
+#include <QDebug>
 
 #include "packagestatuswindow.h"
 #include "confirmationwindow.h"
+#include "transtype.h"
+#include "pkgtype.h"
 
 namespace Ui {
 class MainWindow;
@@ -29,7 +32,6 @@ private:
     QSharedPointer<Ui::MainWindow> ui;
     QSharedPointer<PackageStatusWindow> status_ui;
     QSharedPointer<ConfirmationWindow> confirmation_ui;
-
 };
 
 #endif // MAINWINDOW_H

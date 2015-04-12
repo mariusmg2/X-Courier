@@ -4,4 +4,3 @@
 enum class TransType {fast, medium, slow, undefined};
 
 #endif // TRANSTYPE
-

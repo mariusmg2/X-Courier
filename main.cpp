@@ -8,6 +8,7 @@
 #include "package.h"
 #include "client.h"
 #include "position.h"
+#include "courierdatabase.h"
 
 #include <QApplication>
 #include <QSharedPointer>
@@ -20,6 +21,15 @@ int main(int argc, char *argv[])
     QSharedPointer<MainWindow> w(new MainWindow); // Smart pointer, that when will go out of scope, will release (calling the destructor) the resource.
     //PackageStatusWindow p;
     //ConfirmationWindow c;
+
+    /*CourierDatabase db;
+
+    qDebug() << "\nDatabase is open? " << db.isOpen();
+    qDebug() << "\nDB file is located: " << db.getAbsoluteDatabaseFilePath();
+
+    for(auto x : db.getAllDestinations()) { // Memory leak, haha...
+        qDebug() << x;
+    }*/
 
     Route route = Route("Timisoara", "Arad", 100);
     Route route2 = Route("Arad", "Caransebes", 320);

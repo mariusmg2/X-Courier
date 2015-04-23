@@ -4,7 +4,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(QSharedPointer<Ui::MainWindow>(new Ui::MainWindow))
+    ui(QSharedPointer<Ui::MainWindow>(new Ui::MainWindow)),
+    database(QSharedPointer<CourierDatabase>(new CourierDatabase))
 {
     ui->setupUi(this);
     connect(ui->quit, SIGNAL(clicked()), this, SLOT(close()));
@@ -17,6 +18,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     for(auto i : {"undefined", "fragile", "precious", "dangerous"}) {
         ui->typeComboBox->addItem(i);
+    }
+
+    for(auto i : database->getAllDestinations()) {
+        ui->client_destination_combo->addItem(i);
     }
 }
 

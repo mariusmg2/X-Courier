@@ -12,13 +12,13 @@
 #include "confirmationwindow.h"
 #include "transtype.h"
 #include "pkgtype.h"
+#include "courierdatabase.h"
 
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
@@ -32,6 +32,7 @@ private:
     QSharedPointer<Ui::MainWindow> ui;
     QSharedPointer<PackageStatusWindow> status_ui;
     QSharedPointer<ConfirmationWindow> confirmation_ui;
+    QSharedPointer<CourierDatabase> database;
 };
 
 #endif // MAINWINDOW_H

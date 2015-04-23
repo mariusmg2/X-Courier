@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += sql
 CONFIG   += c++14
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -24,7 +25,8 @@ SOURCES += main.cpp\
     position.cpp \
     schedule.cpp \
     packagestatuswindow.cpp \
-    confirmationwindow.cpp
+    confirmationwindow.cpp \
+    courierdatabase.cpp
 
 HEADERS  += mainwindow.h \
     center.h \
@@ -38,7 +40,8 @@ HEADERS  += mainwindow.h \
     package.h \
     pkgtype.h \
     packagestatuswindow.h \
-    confirmationwindow.h
+    confirmationwindow.h \
+    courierdatabase.h
 
 FORMS    += mainwindow.ui \
     packagestatuswindow.ui \

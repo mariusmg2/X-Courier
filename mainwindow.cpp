@@ -27,8 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     qDebug().nospace() << "~MainWindow()";
     //ui.clear();
 }

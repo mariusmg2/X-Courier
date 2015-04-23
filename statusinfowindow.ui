@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StatusInfoWindow</class>
+ <widget class="QDialog" name="StatusInfoWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>662</width>
+    <height>170</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QGroupBox" name="senderBox">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>9</y>
+     <width>201</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Sender details...</string>
+   </property>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>29</y>
+      <width>181</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="fname">
+       <property name="text">
+        <string>First name: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="lname">
+       <property name="text">
+        <string>Last name: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="email">
+       <property name="text">
+        <string>Email: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="phone">
+       <property name="text">
+        <string>Phone: </string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="recipientBox">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>10</y>
+     <width>201</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Recipient details...</string>
+   </property>
+   <widget class="QWidget" name="verticalLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>181</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLabel" name="email_2">
+       <property name="text">
+        <string>Email: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="lname_2">
+       <property name="text">
+        <string>Last name: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="fname_2">
+       <property name="text">
+        <string>First name: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="phone_2">
+       <property name="text">
+        <string>Phone: </string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="packageBox">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>10</y>
+     <width>201</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Package details...</string>
+   </property>
+   <widget class="QWidget" name="verticalLayoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>181</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QLabel" name="code">
+       <property name="text">
+        <string>Code: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="status">
+       <property name="text">
+        <string>Status: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="pkg_name">
+       <property name="text">
+        <string>Name: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="weight">
+       <property name="text">
+        <string>Weight: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="sourcepoint">
+       <property name="text">
+        <string>Sent from: </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="price">
+       <property name="text">
+        <string>Price: </string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="verticalLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>130</y>
+     <width>421</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <widget class="QPushButton" name="exitButton">
+      <property name="text">
+       <string>exit</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

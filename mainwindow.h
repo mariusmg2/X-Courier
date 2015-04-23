@@ -15,7 +15,7 @@
 #include "courierdatabase.h"
 
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
 
 class MainWindow : public QMainWindow {

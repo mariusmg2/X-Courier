@@ -9,10 +9,10 @@ PackageStatusWindow::PackageStatusWindow(QWidget *parent) :
     connect(ui->quitButton, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->recipientCode, SIGNAL(textChanged(QString)), this, SLOT(recipientCodeTextChanged()));
     connect(ui->recipientName, SIGNAL(textChanged(QString)), this, SLOT(recipientNameTextChanged()));
+    connect(ui->checkButton, SIGNAL(clicked()), this, SLOT(check_clicked()));
 }
 
-PackageStatusWindow::~PackageStatusWindow()
-{
+PackageStatusWindow::~PackageStatusWindow() {
     qDebug().nospace() << "~PackageStatusWindow()";
     //ui.clear();
 }
@@ -32,5 +32,14 @@ void PackageStatusWindow::recipientNameTextChanged() {
     }
     else {
         ui->recipientCode->setEnabled(true);
+    }
+}
+
+void PackageStatusWindow::check_clicked() {
+    if(!ui->recipientCode->text().isEmpty() || !ui->recipientName->text().isEmpty()) { // We don't work for void clients :))
+        if(!status_ui) {
+            status_ui = QSharedPointer<StatusInfoWindow>(new StatusInfoWindow);
+        }
+        status_ui->show();
     }
 }

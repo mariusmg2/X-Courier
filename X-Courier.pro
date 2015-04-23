@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     schedule.cpp \
     packagestatuswindow.cpp \
     confirmationwindow.cpp \
-    courierdatabase.cpp
+    courierdatabase.cpp \
+    statusinfowindow.cpp
 
 HEADERS  += mainwindow.h \
     center.h \
@@ -41,8 +42,10 @@ HEADERS  += mainwindow.h \
     pkgtype.h \
     packagestatuswindow.h \
     confirmationwindow.h \
-    courierdatabase.h
+    courierdatabase.h \
+    statusinfowindow.h
 
 FORMS    += mainwindow.ui \
     packagestatuswindow.ui \
-    confirmationwindow.ui
+    confirmationwindow.ui \
+    statusinfowindow.ui

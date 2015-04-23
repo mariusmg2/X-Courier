@@ -47,7 +47,7 @@ QVector<QString> CourierDatabase::checkStatus(const QString& nameORcode) const {
         query.exec();
 
         if(query.first()) {
-            for(int i = 0; i < 11; i++) {
+            for(int i = 0; i < 15; i++) {
                 result.push_back(query.value(i).toString());
             }
         }

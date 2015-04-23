@@ -23,12 +23,12 @@ public:
     Person(const QString& firstName, QString& lastName, const bool gender, const QDate& born_date):
         firstName(firstName), lastName(lastName), gender(gender), born_date(born_date) {}
     virtual ~Person() {}
-    QString getFullName() const;
-    QString getFirstName() const;
-    QString getLastName() const;
-    bool getGender() const;
-    QString getGenderAsString() const;
-    unsigned int getAge() const;
+    virtual QString getFullName() const;
+    virtual QString getFirstName() const;
+    virtual QString getLastName() const;
+    virtual bool getGender() const;
+    virtual QString getGenderAsString() const;
+    virtual unsigned int getAge() const;
     virtual QString getContact() const = 0;
 private:
     QString firstName;

@@ -20,9 +20,11 @@ public:
         db.close();
     }
     bool isOpen() const;
+    bool isOkToUse() const;
     QString getAbsoluteDatabaseFilePath() const;
     QString getError() const;
     QVector<QString>& getAllDestinations() const;
+    QVector<QString> checkStatus(const QString&) const;
 
 private:
     QSqlDatabase db;

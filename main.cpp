@@ -22,14 +22,20 @@ int main(int argc, char *argv[])
     //PackageStatusWindow p;
     //ConfirmationWindow c;
 
-    /*CourierDatabase db;
+    CourierDatabase db;
 
     qDebug() << "\nDatabase is open? " << db.isOpen();
     qDebug() << "\nDB file is located: " << db.getAbsoluteDatabaseFilePath();
 
     for(auto x : db.getAllDestinations()) { // Memory leak, haha...
         qDebug() << x;
-    }*/
+    }
+
+    qDebug() << "\n\n";
+
+    for(auto i : db.checkStatus("32432")) {
+        qDebug() << i;
+    }
 
     Route route = Route("Timisoara", "Arad", 100);
     Route route2 = Route("Arad", "Caransebes", 320);

@@ -12,15 +12,17 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->status, SIGNAL(clicked()), this, SLOT(on_status_clicked()));
     connect(ui->send, SIGNAL(clicked()), this, SLOT(on_send_clicked()));
 
-    for(auto i : {"undefined", "fast", "medium", "slow"}) {
+    for(auto i : {"Fast", "Medium", "Slow"}) {
         ui->transportComboBox->addItem(i);
     }
 
-    for(auto i : {"undefined", "fragile", "precious", "dangerous"}) {
+    for(auto i : {"Fragile", "Precious", "Dangerous"}) {
         ui->typeComboBox->addItem(i);
     }
 
-    for(auto i : database->getAllDestinations()) {
+    QVector<QString> temp = database->getAllDestinations();
+
+    for(auto i : temp) {
         ui->client_destination_combo->addItem(i);
     }
 }

@@ -9,8 +9,7 @@ namespace Ui {
     class ConfirmationWindow;
 }
 
-class ConfirmationWindow : public QMainWindow
-{
+class ConfirmationWindow : public QMainWindow {
     Q_OBJECT
 
 public:

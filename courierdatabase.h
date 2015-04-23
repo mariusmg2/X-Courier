@@ -12,9 +12,11 @@
 class CourierDatabase {
 public:
     CourierDatabase(const QString& databaseType = "QSQLITE", const QString& databaseName = "database.sqlite3") {
-        db = QSqlDatabase::addDatabase(databaseType);
-        db.setDatabaseName(databaseName);
-        db.open();
+        if(!db.isOpen()) {
+            db = QSqlDatabase::addDatabase(databaseType);
+            db.setDatabaseName(databaseName);
+            db.open();
+        }
     }
     ~CourierDatabase() {
         db.close();

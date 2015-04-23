@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include <QSharedPointer>
 
 #include "statusinfowindow.h"
 

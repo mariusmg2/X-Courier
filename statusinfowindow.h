@@ -10,14 +10,14 @@ namespace Ui {
 }
 
 class StatusInfoWindow : public QDialog {
-//private:
+private:
     Q_OBJECT
 public:
     explicit StatusInfoWindow(QWidget *parent = 0);
     ~StatusInfoWindow();
-
 private:
     Ui::StatusInfoWindow *ui;
+    //CourierDatabase db;
 };
 
 #endif // STATUSINFOWINDOW_H

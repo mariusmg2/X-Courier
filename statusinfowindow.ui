@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Details...</string>
   </property>
   <widget class="QGroupBox" name="senderBox">
    <property name="geometry">
@@ -25,46 +25,76 @@
    <property name="title">
     <string>Sender details...</string>
    </property>
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QWidget" name="formLayoutWidget_2">
     <property name="geometry">
      <rect>
       <x>9</x>
-      <y>29</y>
+      <y>30</y>
       <width>181</width>
-      <height>61</height>
+      <height>81</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="fname">
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="1">
+      <widget class="QLabel" name="label">
        <property name="text">
-        <string>First name: </string>
+        <string/>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="lname">
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Last name: </string>
+        <string/>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="email">
+     <item row="2" column="1">
+      <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>Email: </string>
+        <string/>
        </property>
       </widget>
      </item>
-     <item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
       <widget class="QLabel" name="phone">
        <property name="text">
         <string>Phone: </string>
        </property>
       </widget>
      </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="fname">
+       <property name="text">
+        <string>First name: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="lname">
+       <property name="text">
+        <string>Last name: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="email">
+       <property name="text">
+        <string>Email: </string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
+   <zorder>formLayoutWidget_2</zorder>
+   <zorder>email</zorder>
   </widget>
   <widget class="QGroupBox" name="recipientBox">
    <property name="geometry">
@@ -78,41 +108,69 @@
    <property name="title">
     <string>Recipient details...</string>
    </property>
-   <widget class="QWidget" name="verticalLayoutWidget_3">
+   <widget class="QWidget" name="formLayoutWidget_3">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>9</x>
       <y>30</y>
       <width>181</width>
-      <height>61</height>
+      <height>76</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <widget class="QLabel" name="email_2">
+    <layout class="QFormLayout" name="formLayout_3">
+     <item row="0" column="1">
+      <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>Email: </string>
+        <string/>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="lname_2">
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_6">
        <property name="text">
-        <string>Last name: </string>
+        <string/>
        </property>
       </widget>
      </item>
-     <item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
       <widget class="QLabel" name="fname_2">
        <property name="text">
         <string>First name: </string>
        </property>
       </widget>
      </item>
-     <item>
+     <item row="2" column="0">
       <widget class="QLabel" name="phone_2">
        <property name="text">
         <string>Phone: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="lname_2">
+       <property name="text">
+        <string>Last name: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="email_2">
+       <property name="text">
+        <string>Email: </string>
        </property>
       </widget>
      </item>
@@ -131,55 +189,97 @@
    <property name="title">
     <string>Package details...</string>
    </property>
-   <widget class="QWidget" name="verticalLayoutWidget_4">
+   <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>30</y>
+      <x>9</x>
+      <y>29</y>
       <width>181</width>
-      <height>111</height>
+      <height>116</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout_4">
-     <item>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="5" column="0">
       <widget class="QLabel" name="code">
        <property name="text">
         <string>Code: </string>
        </property>
       </widget>
      </item>
-     <item>
+     <item row="4" column="0">
       <widget class="QLabel" name="status">
        <property name="text">
         <string>Status: </string>
        </property>
       </widget>
      </item>
-     <item>
-      <widget class="QLabel" name="pkg_name">
-       <property name="text">
-        <string>Name: </string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="weight">
-       <property name="text">
-        <string>Weight: </string>
-       </property>
-      </widget>
-     </item>
-     <item>
+     <item row="3" column="0">
       <widget class="QLabel" name="sourcepoint">
        <property name="text">
         <string>Sent from: </string>
        </property>
       </widget>
      </item>
-     <item>
+     <item row="2" column="0">
       <widget class="QLabel" name="price">
        <property name="text">
         <string>Price: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="weight">
+       <property name="text">
+        <string>Weight: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="pkg_name">
+       <property name="text">
+        <string>Content: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>

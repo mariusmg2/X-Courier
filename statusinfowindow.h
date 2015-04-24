@@ -17,6 +17,8 @@ private:
 public:
     explicit StatusInfoWindow(QWidget *parent = 0);
     ~StatusInfoWindow();
+public slots:
+    void newDataEntered(const QString&);
 private:
     QSharedPointer<Ui::StatusInfoWindow> ui;
     CourierDatabase db;

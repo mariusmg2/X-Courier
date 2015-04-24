@@ -21,6 +21,8 @@ private slots:
     void recipientCodeTextChanged();
     void recipientNameTextChanged();
     void check_clicked(); // Funny thing: on_check_clicked() will not work, unless I use Qt Ui tools.
+signals:
+    void buttonCheckClicked(const QString&);
 private:
     QSharedPointer<Ui::PackageStatusWindow> ui;
     QSharedPointer<StatusInfoWindow> status_ui;

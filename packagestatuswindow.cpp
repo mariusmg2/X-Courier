@@ -3,13 +3,15 @@
 
 PackageStatusWindow::PackageStatusWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(QSharedPointer<Ui::PackageStatusWindow>(new Ui::PackageStatusWindow))
+    ui(QSharedPointer<Ui::PackageStatusWindow>(new Ui::PackageStatusWindow)),
+    status_ui(QSharedPointer<StatusInfoWindow>(new StatusInfoWindow))
 {
     ui->setupUi(this);
     connect(ui->quitButton, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->recipientCode, SIGNAL(textChanged(QString)), this, SLOT(recipientCodeTextChanged()));
     connect(ui->recipientName, SIGNAL(textChanged(QString)), this, SLOT(recipientNameTextChanged()));
     connect(ui->checkButton, SIGNAL(clicked()), this, SLOT(check_clicked()));
+    connect(this, SIGNAL(buttonCheckClicked(const QString&)), status_ui.data(), SLOT(newDataEntered(const QString&)));
 }
 
 PackageStatusWindow::~PackageStatusWindow() {
@@ -37,9 +39,13 @@ void PackageStatusWindow::recipientNameTextChanged() {
 
 void PackageStatusWindow::check_clicked() {
     if(!ui->recipientCode->text().isEmpty() || !ui->recipientName->text().isEmpty()) { // We don't work for void clients :))
-        if(!status_ui) {
-            status_ui = QSharedPointer<StatusInfoWindow>(new StatusInfoWindow);
+        if(!ui->recipientName->text().isEmpty()) {
+           emit buttonCheckClicked(ui->recipientName->text());
         }
+        else {
+           emit buttonCheckClicked(ui->recipientCode->text());
+        }
+
         status_ui->show();
     }
 }

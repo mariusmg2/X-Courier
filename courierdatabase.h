@@ -28,7 +28,7 @@ public:
     QString getAbsoluteDatabaseFilePath() const;
     QString getError() const;
     QVector<QString>& getAllDestinations() const;
-    QVector<QString> checkStatus(const QString&) const;
+    QVector<QString> getPackageStatus(const QString&) const;
 
 private:
     QSqlDatabase db;

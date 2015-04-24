@@ -36,7 +36,7 @@ QVector<QString>& CourierDatabase::getAllDestinations() const {
     return *destinations;
 }
 
-QVector<QString> CourierDatabase::checkStatus(const QString& nameORcode) const {
+QVector<QString> CourierDatabase::getPackageStatus(const QString& nameORcode) const {
     QVector<QString> result;
 
     if(this->isOkToUse()) {
@@ -47,7 +47,7 @@ QVector<QString> CourierDatabase::checkStatus(const QString& nameORcode) const {
         query.exec();
 
         if(query.first()) {
-            for(int i = 0; i < 15; i++) {
+            for(int i = 0; i < 16; i++) {
                 result.push_back(query.value(i).toString());
             }
         }
@@ -58,6 +58,5 @@ QVector<QString> CourierDatabase::checkStatus(const QString& nameORcode) const {
     else {
         result.push_back("Some database error (not oppened, or not valid).");
     }
-
     return result;
 }

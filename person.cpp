@@ -23,3 +23,15 @@ bool Person::getGender() const {
 unsigned int Person::getAge() const {
     return (QDate::currentDate().year() - this->born_date.year());
 }
+
+void Person::setFirstName(const QString& fname) {
+    firstName = fname;
+}
+
+void Person::setLastName(const QString& lname) {
+    lastName = lname;
+}
+
+void Person::setGender(bool gender) {
+    this->gender = gender;
+}

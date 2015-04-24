@@ -44,7 +44,8 @@ HEADERS  += mainwindow.h \
     packagestatuswindow.h \
     confirmationwindow.h \
     courierdatabase.h \
-    statusinfowindow.h
+    statusinfowindow.h \
+    statustype.h
 
 FORMS    += mainwindow.ui \
     packagestatuswindow.ui \

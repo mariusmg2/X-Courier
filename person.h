@@ -23,6 +23,9 @@ public:
     Person(const QString& firstName, QString& lastName, const bool gender, const QDate& born_date):
         firstName(firstName), lastName(lastName), gender(gender), born_date(born_date) {}
     virtual ~Person() {}
+    virtual void setFirstName(const QString&);
+    virtual void setLastName(const QString&);
+    virtual void setGender(bool);
     virtual QString getFullName() const;
     virtual QString getFirstName() const;
     virtual QString getLastName() const;

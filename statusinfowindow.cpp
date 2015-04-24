@@ -15,12 +15,33 @@ StatusInfoWindow::~StatusInfoWindow() {
     qDebug().nospace() << "~StatusInfoWindow()";
 }
 
+void StatusInfoWindow::clearWindowData() const {
+    ui->label->setText("");
+    ui->label_2->setText("");
+    ui->label_3->setText("");
+    ui->label_4->setText("");
+
+    ui->label_5->setText("");
+    ui->label_6->setText("");
+    ui->label_7->setText("");
+    ui->label_8->setText("");
+
+    ui->label_9->setText("");
+    ui->label_10->setText("");
+    ui->label_11->setText("");
+    ui->label_12->setText("");
+    ui->label_13->setText("");
+    ui->label_14->setText("");
+}
+
 void StatusInfoWindow::newDataEntered(const QString& data) {
     QVector<QString> infoData = db.checkStatus(data);
 
     for(auto i : infoData) {
         qDebug() << i;
     }
+
+    this->clearWindowData();
 
     if(infoData.size() == 15) {
         ui->label->setText(infoData[7]);    // Sender first name.

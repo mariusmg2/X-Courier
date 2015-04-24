@@ -19,6 +19,7 @@ public:
     ~StatusInfoWindow();
 public slots:
     void newDataEntered(const QString&);
+    void clearWindowData() const;
 private:
     QSharedPointer<Ui::StatusInfoWindow> ui;
     CourierDatabase db;

@@ -5,6 +5,8 @@
 #include <QSharedPointer>
 #include <QDebug>
 
+#include "courierdatabase.h"
+
 namespace Ui {
     class StatusInfoWindow;
 }
@@ -16,8 +18,8 @@ public:
     explicit StatusInfoWindow(QWidget *parent = 0);
     ~StatusInfoWindow();
 private:
-    Ui::StatusInfoWindow *ui;
-    //CourierDatabase db;
+    QSharedPointer<Ui::StatusInfoWindow> ui;
+    CourierDatabase db;
 };
 
 #endif // STATUSINFOWINDOW_H

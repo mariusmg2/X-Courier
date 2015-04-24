@@ -3,13 +3,20 @@
 
 StatusInfoWindow::StatusInfoWindow(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::StatusInfoWindow)
+    ui(QSharedPointer<Ui::StatusInfoWindow>(new Ui::StatusInfoWindow)),
+    db("QSQLITE", "database.sqlite3", "Status Window Connection")
 {
     ui->setupUi(this);
     connect(ui->exitButton, SIGNAL(clicked()), this, SLOT(close()));
+
+    QVector<QString> infoData = db.checkStatus("Marusanici");
+
+    for(auto i : infoData) {
+        qDebug() << i;
+    }
 }
 
 StatusInfoWindow::~StatusInfoWindow() {
-    delete ui;
+    //ui.clear();
     qDebug().nospace() << "~StatusInfoWindow()";
 }

@@ -11,15 +11,17 @@
 
 class CourierDatabase {
 public:
-    CourierDatabase(const QString& databaseType = "QSQLITE", const QString& databaseName = "database.sqlite3") {
-        if(!db.isOpen()) {
-            db = QSqlDatabase::addDatabase(databaseType);
-            db.setDatabaseName(databaseName);
-            db.open();
-        }
+    CourierDatabase(const QString& databaseType = "QSQLITE", const QString& databaseName = "database.sqlite3",
+                    const QString& connectionName = "Default X-Courier connection") {
+        db = QSqlDatabase::addDatabase(databaseType, connectionName);
+        db.setDatabaseName(databaseName);
+        db.open();
+        qDebug() << "CourierDatabase()";
+        qDebug() << "Connection " << db.connectionName() << " has been created.";
     }
     ~CourierDatabase() {
         db.close();
+        qDebug() << "~CourierDatabase()";
     }
     bool isOpen() const;
     bool isOkToUse() const;

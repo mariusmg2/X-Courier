@@ -7,6 +7,7 @@
 QT       += core gui
 QT       += sql
 CONFIG   += c++14
+QMAKE_CXXFLAGS += -ggdb
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

@@ -21,6 +21,8 @@ public:
     ~ConfirmationWindow();
     void setData(const Client&, const Client&, const Route&);
     void printDataToWindow() const;
+private slots:
+    void insertDataInDB();
 private:
     QSharedPointer<Ui::ConfirmationWindow> ui;
     QSharedPointer<CourierDatabase> database;

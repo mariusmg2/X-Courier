@@ -11,6 +11,7 @@ ConfirmationWindow::ConfirmationWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->denyButton, SIGNAL(clicked()), this, SLOT(close()));
+    connect(ui->acceptButton, SIGNAL(clicked()), this, SLOT(insertDataInDB()));
 }
 
 ConfirmationWindow::~ConfirmationWindow() {
@@ -39,6 +40,11 @@ void ConfirmationWindow::printDataToWindow() const {
 
     ui->code->setText(QString::number(client.getPackage().getCode()));
     ui->date->setText(QDate::currentDate().addDays(route.getTransitTime()).toString());
-    ui->type_2->setText("UNDEFINED");
+    ui->type_2->setText("UNDEFINED"); // TODO: fix this problem.
     ui->price->setText(QString::number(route.getTotalPrice()));
+}
+
+void ConfirmationWindow::insertDataInDB() {
+    database->insertShippingIntoDatabase(client, recipient, route);
+    qDebug() << "insertDataInDB(): Successfully inserted in DB";
 }

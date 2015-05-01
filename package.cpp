@@ -27,6 +27,10 @@ QString Package::getStatus() const {
     }
 }
 
+StatusType Package::getStatus(bool) const{
+    return this->status;
+}
+
 QString Package::getType() const{
     switch(type) {
         case PkgType::dangerous:
@@ -68,6 +72,21 @@ void Package::setCode(int code) {
 
 void Package::setStatus(const StatusType status) {
     this->status = status;
+}
+
+void Package::setStatus(const QString& status) {
+    if(status.toLower() == "intransit") {
+        this->status = StatusType::inTransit;
+    }
+    else if(status.toLower() == "rejected") {
+        this->status = StatusType::rejected;
+    }
+    else if(status.toLower() == "Waiting") {
+        this->status = StatusType::waiting;
+    }
+    else {
+        this->status = StatusType::undefined;
+    }
 }
 
 void Package::setPackageName(const QString& name) {

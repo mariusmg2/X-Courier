@@ -27,6 +27,7 @@ public:
     virtual unsigned int getWeight() const;
     virtual unsigned int getCode() const;
     virtual QString getStatus() const;
+    virtual StatusType getStatus(bool) const; //
     virtual QString getType() const;
     virtual PkgType getType(bool) const; // This crap cannot be owerloaded (why?) so I just trow one blind bool arg.
     virtual QString getPackageName() const;
@@ -34,6 +35,7 @@ public:
     virtual void setWeight(int);
     virtual void setCode(int);
     virtual void setStatus(const StatusType);
+    virtual void setStatus(const QString&); //
     virtual void setPackageName(const QString&);
     virtual void setType(const PkgType);
     virtual void setType(const QString&);

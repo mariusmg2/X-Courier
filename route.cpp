@@ -36,3 +36,15 @@ unsigned int Route::getTransitTime() const {
 QDate Route::getPickUpDate() const {
     return QDate::currentDate().addDays(this->getTransitTime());
 }
+
+void Route::setSource(const QString& source) {
+    this->source = source;
+}
+
+void Route::setDestination(const QString& destination) {
+    this->destination = destination;
+}
+
+void Route::setDistance(int distance) {
+    this->distance = distance;
+}

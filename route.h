@@ -26,6 +26,9 @@ public:
     virtual unsigned int getTotalPrice() const;
     virtual unsigned int getTransitTime() const;
     virtual QDate getPickUpDate() const;
+    virtual void setSource(const QString&);
+    virtual void setDestination(const QString&);
+    virtual void setDistance(int);
 private:
     QString source;
     QString destination;

@@ -27,3 +27,12 @@ unsigned int Route::getTransitTime() const {
         return 3;
     }
 }
+
+/**
+ * @brief Route::getPickUpDate
+ * @return This will return the date when the package will arive at some center, and will need to be picked up.
+ */
+
+QDate Route::getPickUpDate() const {
+    return QDate::currentDate().addDays(this->getTransitTime());
+}

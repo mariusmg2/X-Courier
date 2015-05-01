@@ -2,6 +2,7 @@
 #define ROUTE_H
 
 #include <QString>
+#include <QDate>
 
 /**
  * @brief The Route class
@@ -18,12 +19,13 @@ public:
     Route(): source(QString()), destination(QString()), distance(0), pricePerKm(0) {}
     Route(const QString& source, const QString& destination, int distance, int pricePerKm = 2): source(source),
         destination(destination), distance(distance), pricePerKm(pricePerKm) {}
-    ~Route() {}
-    QString getSource() const;
-    QString getDestination() const;
-    unsigned int getDistance() const;
-    unsigned int getTotalPrice() const;
-    unsigned int getTransitTime() const;
+    virtual ~Route() {}
+    virtual QString getSource() const;
+    virtual QString getDestination() const;
+    virtual unsigned int getDistance() const;
+    virtual unsigned int getTotalPrice() const;
+    virtual unsigned int getTransitTime() const;
+    virtual QDate getPickUpDate() const;
 private:
     QString source;
     QString destination;

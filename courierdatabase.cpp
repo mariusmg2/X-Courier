@@ -8,6 +8,20 @@ bool CourierDatabase::isOkToUse() const {
     return db.isOpen() && db.isValid();
 }
 
+bool CourierDatabase::shippingExist(int code) const {
+    if(this->isOkToUse()) {
+        QSqlQuery query(db);
+        query.prepare("SELECT * FROM status WHERE code = :code");
+        query.bindValue(":code", code);
+        query.exec();
+
+        if(query.first()) {
+            return true;
+        }
+    }
+    return false;
+}
+
 QString CourierDatabase::getAbsoluteDatabaseFilePath() const {
     QFileInfo checkFile(db.databaseName());
     return checkFile.absoluteFilePath();
@@ -59,4 +73,41 @@ QVector<QString> CourierDatabase::getPackageStatus(const QString& nameORcode) co
         result.push_back("Some database error (not oppened, or not valid).");
     }
     return result;
+}
+
+void CourierDatabase::insertShippingIntoDatabase(Client& client, Client& recipient, Route& route) {
+    if(this->isOkToUse()) {
+        if(!this->shippingExist(client.getPackage().getCode())) {
+            QSqlQuery query(db);
+            query.prepare("INSERT INTO status (fname, lname, email, phone, r_fname, r_lname, r_email, r_phone, sourcepoint, endpoint,"
+                          " code, name, weight, status, pkgtype, pick_date) VALUES (:fname, :lname, :email, :phone, :r_fname, :r_lname,"
+                          " :r_email, :r_phone, :sourcepoint, :endpoint, :code, :name, :weight, :status, :pkgtype, :pick_date)");
+
+            query.bindValue(":fname", client.getFirstName().toLower());
+            query.bindValue(":lname", client.getLastName().toLower());
+            query.bindValue(":email", client.getEmail().toLower());
+            query.bindValue(":phone", client.getPhone());
+
+            query.bindValue(":r_fname", recipient.getFirstName().toLower());
+            query.bindValue(":r_lname", recipient.getLastName().toLower());
+            query.bindValue(":r_email", recipient.getEmail().toLower());
+            query.bindValue(":r_phone", recipient.getPhone());
+
+            query.bindValue(":sourcepoint", route.getSource().toUpper());
+            query.bindValue(":endpoint", route.getDestination().toUpper());
+
+            query.bindValue(":code", client.getPackage().getCode());
+            query.bindValue(":name", client.getPackage().getPackageName().toLower());
+            query.bindValue(":weight", client.getPackage().getWeight());
+            query.bindValue(":status", client.getPackage().getStatus());
+            query.bindValue(":pkgtype", client.getPackage().getType());
+            query.bindValue(":pick_date", route.getPickUpDate().toString("dd.MMM.yyyy"));
+
+            query.exec();
+            qDebug() << "Client successfully added in database.";
+        }
+        else {
+            qDebug() << "This shipping already exists in DB.";
+        }
+    }
 }

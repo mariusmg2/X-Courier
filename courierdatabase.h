@@ -9,6 +9,10 @@
 #include <QString>
 #include <QVector>
 
+#include "client.h"
+#include "route.h"
+#include "package.h"
+
 class CourierDatabase {
 public:
     CourierDatabase(const QString& databaseType = "QSQLITE", const QString& databaseName = "database.sqlite3",
@@ -25,11 +29,12 @@ public:
     }
     bool isOpen() const;
     bool isOkToUse() const;
+    bool shippingExist(int) const;
     QString getAbsoluteDatabaseFilePath() const;
     QString getError() const;
     QVector<QString>& getAllDestinations() const;
     QVector<QString> getPackageStatus(const QString&) const;
-
+    void insertShippingIntoDatabase(Client&, Client&, Route&);
 private:
     QSqlDatabase db;
 };

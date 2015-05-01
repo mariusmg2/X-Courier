@@ -27,7 +27,6 @@ public:
 private slots:
     void on_status_clicked();
     void on_send_clicked();
-
 private:
     QSharedPointer<Ui::MainWindow> ui;
     QSharedPointer<PackageStatusWindow> status_ui;

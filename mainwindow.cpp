@@ -48,7 +48,8 @@ bool MainWindow::allDataValid() const {
             || ui->package_weight_line->text().isEmpty() || !phoneREX.exactMatch(ui->client_phone_line->text())
             || !phoneREX.exactMatch(ui->recipient_phone_line->text()) || ui->recipient_phone_line->text().count() < 8
             || ui->client_phone_line->text().count() < 8 || !mailREX.exactMatch(ui->client_email_line->text())
-            || !mailREX.exactMatch(ui->recipient_email_line->text())) {
+            || !mailREX.exactMatch(ui->recipient_email_line->text()) || ui->package_name_line->text().isEmpty()
+            || !phoneREX.exactMatch(ui->package_weight_line->text())) {
         return false;
     }
     return true;
@@ -66,30 +67,20 @@ void MainWindow::on_send_clicked() {
         confirmation_ui = QSharedPointer<ConfirmationWindow>(new ConfirmationWindow);
     }
     if(this->allDataValid()) {
-        Client client;
-        Client recipient;
-        Route route;
+        Client client(ui->client_fname_line->text(), ui->client_lname_line->text(),
+                      ui->client_phone_line->text(), ui->client_email_line->text());
 
-        recipient.setFirstName(ui->recipient_fname_line->text());
-        recipient.setLastName(ui->recipient_lname_line->text());
-        recipient.setPhone(ui->recipient_phone_line->text());
-        recipient.setEmail(ui->recipient_email_line->text());
+        Client recipient(ui->recipient_fname_line->text(), ui->recipient_lname_line->text(),
+                         ui->recipient_phone_line->text(), ui->recipient_email_line->text());
 
-        client.setFirstName(ui->client_fname_line->text());
-        client.setLastName(ui->client_lname_line->text());
-        client.setPhone(ui->client_phone_line->text());
-        client.setEmail(ui->client_email_line->text());
+        Route route("Timisoara", ui->client_destination_combo->currentText(),
+                    database->getShortestRouteDistance("Timisoara", ui->client_destination_combo->currentText()));
 
-        client.getPackage().setCode(23321);
-        client.getPackage().setPackageName("peste");
-        client.getPackage().setPrice(333);
-        client.getPackage().setStatus(StatusType::inTransit);
-        client.getPackage().setType(PkgType::fragile);
+        Package package(ui->package_weight_line->text().toUInt(), database->getUniqueShippingID(),
+                        route.getTotalPrice(), StatusType::inTransit, ui->package_name_line->text(),
+                        PkgType::precious); //TODO Get package type from UI.
 
-        route.setSource("Timisoara");
-        route.setDestination(ui->client_destination_combo->currentText());
-        route.setDistance(20);
-
+        client.setPackage(package);
         confirmation_ui->setData(client, recipient, route);
 
         confirmation_ui->show();

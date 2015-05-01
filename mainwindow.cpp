@@ -37,13 +37,18 @@ MainWindow::~MainWindow() {
 }
 
 bool MainWindow::allDataValid() const {
-    QRegExp re("\\d*");  // a digit (\d), zero or more times (*)
+    QRegExp phoneREX("\\d*");  // a digit (\d), zero or more times (*)
+    QRegExp mailREX("\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
+    mailREX.setCaseSensitivity(Qt::CaseInsensitive);
+    mailREX.setPatternSyntax(QRegExp::RegExp);
     if(ui->client_fname_line->text().isEmpty() || ui->client_lname_line->text().isEmpty()
             || ui->client_email_line->text().isEmpty() || ui->client_phone_line->text().isEmpty()
             || ui->recipient_fname_line->text().isEmpty() || ui->recipient_lname_line->text().isEmpty()
             || ui->recipient_email_line->text().isEmpty() || ui->recipient_phone_line->text().isEmpty()
-            || ui->package_weight_line->text().isEmpty() || !re.exactMatch(ui->client_phone_line->text())
-            || !re.exactMatch(ui->recipient_phone_line->text())) {
+            || ui->package_weight_line->text().isEmpty() || !phoneREX.exactMatch(ui->client_phone_line->text())
+            || !phoneREX.exactMatch(ui->recipient_phone_line->text()) || ui->recipient_phone_line->text().count() < 8
+            || ui->client_phone_line->text().count() < 8 || !mailREX.exactMatch(ui->client_email_line->text())
+            || !mailREX.exactMatch(ui->recipient_email_line->text())) {
         return false;
     }
     return true;

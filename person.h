@@ -20,7 +20,8 @@
 class Person {
 public:
     Person(): firstName(QString()), lastName(QString()), gender(false), born_date(QDate::currentDate()) {}
-    Person(const QString& firstName, QString& lastName, bool gender, const QDate& born_date):
+    Person(const QString& firstName, const QString& lastName): firstName(firstName), lastName(lastName), gender(false), born_date(QDate::currentDate()) {}
+    Person(const QString& firstName, const QString& lastName, bool gender, const QDate& born_date):
         firstName(firstName), lastName(lastName), gender(gender), born_date(born_date) {}
     virtual ~Person() {}
     virtual void setFirstName(const QString&);

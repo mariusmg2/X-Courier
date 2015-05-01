@@ -111,3 +111,31 @@ void CourierDatabase::insertShippingIntoDatabase(Client& client, Client& recipie
         }
     }
 }
+
+int CourierDatabase::getShortestRouteDistance(const QString& source, const QString& destination) const {
+    if(this->isOkToUse()) {
+        QVector<int> temp;
+
+        QSqlQuery query(db);
+        query.prepare("SELECT distance FROM routes WHERE startpoint = :startpoint AND endpoint = :endpoint");
+
+        query.bindValue(":startpoint", source);
+        query.bindValue(":endpoint", destination);
+
+        query.exec();
+
+       while(query.next()) {
+           temp.push_back(query.value(0).toInt());
+       }
+
+       int aux = temp[0];
+
+       for(auto i : temp) {
+           if(i < aux) {
+               aux = i;
+           }
+       }
+       return aux;
+    }
+    return 0;
+}

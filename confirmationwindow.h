@@ -16,12 +16,11 @@ namespace Ui {
 
 class ConfirmationWindow : public QMainWindow {
     Q_OBJECT
-
 public:
     explicit ConfirmationWindow(QWidget *parent = 0);
     ~ConfirmationWindow();
     void setData(const Client&, const Client&, const Route&);
-
+    void printDataToWindow() const;
 private:
     QSharedPointer<Ui::ConfirmationWindow> ui;
     QSharedPointer<CourierDatabase> database;

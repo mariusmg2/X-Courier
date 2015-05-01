@@ -18,12 +18,16 @@ ConfirmationWindow::~ConfirmationWindow() {
     //ui.clear();
 }
 
-void ConfirmationWindow::setData(const Client &client_p, const Client &recipient_p, const Route &route_p) {
+void ConfirmationWindow::setData(const Client& client_p, const Client& recipient_p, const Route& route_p) {
     client = client_p;
     recipient = recipient_p;
     route = route_p;
 
     // Print data in window.
+    this->printDataToWindow();
+}
+
+void ConfirmationWindow::printDataToWindow() const {
     ui->fname->setText(client.getFirstName());
     ui->lname->setText(client.getLastName());
     ui->email->setText(client.getEmail());
@@ -31,8 +35,10 @@ void ConfirmationWindow::setData(const Client &client_p, const Client &recipient
 
     ui->weight->setText(QString::number(client.getPackage().getWeight()));
     ui->type->setText(client.getPackage().getType());
+    ui->destination->setText(route.getDestination());
 
     ui->code->setText(QString::number(client.getPackage().getCode()));
-    //ui->code->setText(client.getPackage().getWeight());
-
+    ui->date->setText(QDate::currentDate().addDays(route.getTransitTime()).toString());
+    ui->type_2->setText("UNDEFINED");
+    ui->price->setText(QString::number(route.getTotalPrice()));
 }

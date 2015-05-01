@@ -46,6 +46,10 @@ QString Package::getType() const{
     }
 }
 
+PkgType Package::getType(bool) const {
+    return this->type;
+}
+
 QString Package::getPackageName() const {
     return packageName;
 }
@@ -72,6 +76,21 @@ void Package::setPackageName(const QString& name) {
 
 void Package::setType(const PkgType type) {
     this->type = type;
+}
+
+void Package::setType(const QString& type) {
+    if(type.toLower() == "dangerous") {
+        this->type = PkgType::dangerous;
+    }
+    else if(type.toLower() == "fragile") {
+        this->type = PkgType::fragile;
+    }
+    else if(type.toLower() == "precious") {
+        this->type = PkgType::precious;
+    }
+    else {
+        this->type = PkgType::undefined;
+    }
 }
 
 void Package::setPrice(int price) {

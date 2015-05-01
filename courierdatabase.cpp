@@ -117,8 +117,8 @@ int CourierDatabase::getShortestRouteDistance(const QString& source, const QStri
         QVector<int> temp;
 
         QSqlQuery query(db);
-        query.prepare("SELECT distance FROM routes WHERE startpoint = :startpoint AND endpoint = :endpoint");
 
+        query.prepare("SELECT distance FROM routes WHERE startpoint = :startpoint AND endpoint = :endpoint");
         query.bindValue(":startpoint", source);
         query.bindValue(":endpoint", destination);
 
@@ -128,7 +128,7 @@ int CourierDatabase::getShortestRouteDistance(const QString& source, const QStri
            temp.push_back(query.value(0).toInt());
        }
 
-       int aux = temp[0];
+       int aux = 99999999; // TODO: Fix this shit.
 
        for(auto i : temp) {
            if(i < aux) {
@@ -136,6 +136,23 @@ int CourierDatabase::getShortestRouteDistance(const QString& source, const QStri
            }
        }
        return aux;
+    }
+    return 0;
+}
+
+int CourierDatabase::getUniqueShippingID() const {
+    if(this->isOkToUse()) {
+        QSqlQuery query(db);
+        int code_id = 0;
+
+        query.prepare("SELECT code FROM status");
+        query.exec();
+
+        while(query.next()) {
+            code_id++;
+        }
+
+        return code_id + 74827;
     }
     return 0;
 }

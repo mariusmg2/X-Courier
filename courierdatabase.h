@@ -36,6 +36,7 @@ public:
     QVector<QString> getPackageStatus(const QString&) const;
     void insertShippingIntoDatabase(Client&, Client&, Route&);
     int getShortestRouteDistance(const QString&, const QString&) const;
+    int getUniqueShippingID() const; // Pseudorandom shipping ID status.
 private:
     QSqlDatabase db;
 };

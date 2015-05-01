@@ -19,27 +19,9 @@ ConfirmationWindow::~ConfirmationWindow() {
 }
 
 void ConfirmationWindow::setData(const Client &client_p, const Client &recipient_p, const Route &route_p) {
-    client.setFirstName(client_p.getFirstName()); // TODO: Overload operator= for Client objects...
-    client.setLastName(client_p.getLastName());
-    client.setEmail(client_p.getEmail());
-    client.setPhone(client_p.getPhone());
-    client.setGender(client_p.getGender());
-    client.getPackage().setCode(client_p.getPackage().getCode());
-    client.getPackage().setPackageName(client_p.getPackage().getPackageName());
-    client.getPackage().setPrice(client_p.getPackage().getPrice());
-    //client.getPackage().setStatus(client_p.getPackage().getStatus());
-    //client.getPackage().setType(client_p.getPackage().getType());
-    client.getPackage().setWeight(client_p.getPackage().getWeight());
-
-    recipient.setFirstName(recipient_p.getFirstName()); // TODO: Overload operator= for Client objects...
-    recipient.setLastName(recipient_p.getLastName());
-    recipient.setEmail(recipient_p.getEmail());
-    recipient.setPhone(recipient_p.getPhone());
-    recipient.setGender(recipient_p.getGender());
-
-    route.setSource(route_p.getDestination());
-    route.setDestination(route_p.getDestination());
-    route.setDistance(route_p.getDistance());
+    client = client_p;
+    recipient = recipient_p;
+    route = route_p;
 
     // Print data in window.
     ui->fname->setText(client.getFirstName());

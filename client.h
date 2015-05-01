@@ -2,6 +2,7 @@
 #define CLIENT_H
 
 #include <QString>
+#include <QDate>
 #include "person.h"
 #include "package.h"
 
@@ -18,6 +19,8 @@
 class Client: public Person {
 public:
     Client(): Person(), package(Package()), phone(QString()), email(QString()) {}
+    /*Client(const QString& firstName, const QString& lastName, const QString& phone, const QString& email):
+       Person(firstName, lastName, true, QDate::currentDate()), package(Package()), phone(phone), email(email) {}*/
     Client(const QString& firstName, QString& lastName, const bool gender, const QDate& born_date,
            const Package& package, const QString& phone, const QString& email):
         Person(firstName, lastName, gender, born_date), package(package), phone(phone), email(email) {}

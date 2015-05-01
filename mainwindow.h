@@ -7,6 +7,7 @@
 #include <QPushButton>
 #include <QSharedPointer>
 #include <QDebug>
+#include <QRegExp>
 
 #include "packagestatuswindow.h"
 #include "confirmationwindow.h"
@@ -27,6 +28,7 @@ public:
 private slots:
     void on_status_clicked();
     void on_send_clicked();
+    bool allDataValid() const;
 private:
     QSharedPointer<Ui::MainWindow> ui;
     QSharedPointer<PackageStatusWindow> status_ui;

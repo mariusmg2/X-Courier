@@ -80,8 +80,8 @@ void CourierDatabase::insertShippingIntoDatabase(Client& client, Client& recipie
         if(!this->shippingExist(client.getPackage().getCode())) {
             QSqlQuery query(db);
             query.prepare("INSERT INTO status (fname, lname, email, phone, r_fname, r_lname, r_email, r_phone, sourcepoint, endpoint,"
-                          " code, name, weight, status, pkgtype, pick_date) VALUES (:fname, :lname, :email, :phone, :r_fname, :r_lname,"
-                          " :r_email, :r_phone, :sourcepoint, :endpoint, :code, :name, :weight, :status, :pkgtype, :pick_date)");
+                          " price, code, name, weight, status, pkgtype, pick_date) VALUES (:fname, :lname, :email, :phone, :r_fname, :r_lname,"
+                          " :r_email, :r_phone, :sourcepoint, :endpoint, :price, :code, :name, :weight, :status, :pkgtype, :pick_date)");
 
             query.bindValue(":fname", client.getFirstName().toLower());
             query.bindValue(":lname", client.getLastName().toLower());
@@ -96,6 +96,7 @@ void CourierDatabase::insertShippingIntoDatabase(Client& client, Client& recipie
             query.bindValue(":sourcepoint", route.getSource().toUpper());
             query.bindValue(":endpoint", route.getDestination().toUpper());
 
+            query.bindValue(":price", client.getPackage().getPrice());
             query.bindValue(":code", client.getPackage().getCode());
             query.bindValue(":name", client.getPackage().getPackageName().toLower());
             query.bindValue(":weight", client.getPackage().getWeight());

@@ -16,6 +16,25 @@ unsigned int Route::getTotalPrice() const {
     return this->distance * this->pricePerKm;
 }
 
+float Route::getTotalPriceWithPackage(const Package& pkg) const {
+    float temp = this->getTotalPrice();
+
+    temp *= pkg.getWeight();
+    temp *= pkg.getPrice();
+
+    if(pkg.getType().toLower() == "dangerous") {
+        temp *= 2;
+    }
+    else if(pkg.getType().toLower() == "fragile") {
+        temp *= 3;
+    }
+    else {
+        temp *= 4;
+    }
+
+    return temp / 1000;
+}
+
 unsigned int Route::getTransitTime() const {
     if(this->distance <= 100) {
         return 1;

@@ -3,6 +3,9 @@
 
 #include <QString>
 #include <QDate>
+#include <QDebug>
+
+#include "package.h"
 
 /**
  * @brief The Route class
@@ -24,6 +27,7 @@ public:
     virtual QString getDestination() const;
     virtual unsigned int getDistance() const;
     virtual unsigned int getTotalPrice() const;
+    virtual float getTotalPriceWithPackage(const Package&) const;
     virtual unsigned int getTransitTime() const;
     virtual QDate getPickUpDate() const;
     virtual void setSource(const QString&);

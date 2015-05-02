@@ -8,6 +8,10 @@ unsigned int Package::getCode() const {
     return code;
 }
 
+unsigned int Package::getPrice() const {
+    return price;
+}
+
 QString Package::getStatus() const {
     switch(status) {
         case StatusType::inTransit:
@@ -58,7 +62,7 @@ QString Package::getPackageName() const {
     return packageName;
 }
 
-unsigned int Package::getPrice() const {
+unsigned int Package::getPackagePrice() const {
     return price;
 }
 

@@ -26,12 +26,13 @@ public:
     virtual ~Package() {}
     virtual unsigned int getWeight() const;
     virtual unsigned int getCode() const;
+    virtual unsigned int getPrice() const;
     virtual QString getStatus() const;
     virtual StatusType getStatus(bool) const; //
     virtual QString getType() const;
     virtual PkgType getType(bool) const; // This crap cannot be owerloaded (why?) so I just trow one blind bool arg.
     virtual QString getPackageName() const;
-    virtual unsigned int getPrice() const;
+    virtual unsigned int getPackagePrice() const;
     virtual void setWeight(int);
     virtual void setCode(int);
     virtual void setStatus(const StatusType);

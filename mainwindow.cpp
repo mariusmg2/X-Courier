@@ -77,7 +77,7 @@ void MainWindow::on_send_clicked() {
                     database->getShortestRouteDistance("Timisoara", ui->client_destination_combo->currentText()));
 
         Package package(ui->package_weight_line->text().toUInt(), database->getUniqueShippingID(),
-                        route.getTotalPrice(), StatusType::inTransit, ui->package_name_line->text(),
+                        10, StatusType::inTransit, ui->package_name_line->text(),
                         PkgType::precious); //TODO Get package type from UI.
 
         client.setPackage(package);

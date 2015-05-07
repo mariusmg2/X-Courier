@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QSharedPointer>
 #include <QDebug>
+#include <QThread>
+#include <QApplication>
 
 #include "courierdatabase.h"
 #include "client.h"
@@ -22,7 +24,7 @@ public:
     void setData(const Client&, const Client&, const Route&);
     void printDataToWindow() const;
 private slots:
-    void insertDataInDB();
+    void insertDataInDB() const;
 private:
     QSharedPointer<Ui::ConfirmationWindow> ui;
     QSharedPointer<CourierDatabase> database;

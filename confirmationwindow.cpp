@@ -43,9 +43,16 @@ void ConfirmationWindow::printDataToWindow() const {
     ui->date->setText(QDate::currentDate().addDays(route.getTransitTime()).toString());
     ui->type_2->setText("UNDEFINED"); // TODO: fix this problem.
     ui->price->setText(QString::number(route.getTotalPriceWithPackage(client.getPackage())));
+
+    ui->status->setText("");
 }
 
-void ConfirmationWindow::insertDataInDB() {
-    database->insertShippingIntoDatabase(client, recipient, route);
+void ConfirmationWindow::insertDataInDB() const {
+    bool ok = database->insertShippingIntoDatabase(client, recipient, route);
+
+    ui->status->setText(ok ? "Succesfully added in DB! Exiting..." : "There was an error :(. Exiting.. ");
+    qApp->processEvents(); // This is for updating the QLabel imediatlly after setText() method.
+    QThread::sleep(2);
+
     qDebug() << "insertDataInDB(): Successfully inserted in DB";
 }

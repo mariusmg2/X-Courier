@@ -34,7 +34,7 @@ public:
     QString getError() const;
     QVector<QString>& getAllDestinations() const;
     QVector<QString> getPackageStatus(const QString&) const;
-    void insertShippingIntoDatabase(Client&, Client&, Route&);
+    bool insertShippingIntoDatabase(const Client&, const Client&, const Route&);
     int getShortestRouteDistance(const QString&, const QString&) const;
     int getUniqueShippingID() const; // Pseudorandom shipping ID status.
 private:

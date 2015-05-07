@@ -75,7 +75,7 @@ QVector<QString> CourierDatabase::getPackageStatus(const QString& nameORcode) co
     return result;
 }
 
-void CourierDatabase::insertShippingIntoDatabase(Client& client, Client& recipient, Route& route) {
+bool CourierDatabase::insertShippingIntoDatabase(const Client& client, const Client& recipient, const Route& route) {
     if(this->isOkToUse()) {
         if(!this->shippingExist(client.getPackage().getCode())) {
             QSqlQuery query(db);
@@ -106,9 +106,11 @@ void CourierDatabase::insertShippingIntoDatabase(Client& client, Client& recipie
 
             query.exec();
             qDebug() << "Client successfully added in database.";
+            return true;
         }
         else {
             qDebug() << "This shipping already exists in DB.";
+            return false;
         }
     }
 }
@@ -136,7 +138,7 @@ int CourierDatabase::getShortestRouteDistance(const QString& source, const QStri
                aux = i;
            }
        }
-       return aux;
+       return aux != 99999999 ? aux : 0;
     }
     return 0;
 }

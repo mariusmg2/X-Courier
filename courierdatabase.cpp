@@ -56,7 +56,7 @@ QVector<QString> CourierDatabase::getPackageStatus(const QString& nameORcode) co
     if(this->isOkToUse()) {
         QSqlQuery query(db);
         query.prepare("SELECT * FROM status WHERE lname = :lname OR code = :code");
-        query.bindValue(":lname", nameORcode);
+        query.bindValue(":lname", nameORcode.toLower());
         query.bindValue(":code", nameORcode);
         query.exec();
 
@@ -113,6 +113,7 @@ bool CourierDatabase::insertShippingIntoDatabase(const Client& client, const Cli
             return false;
         }
     }
+    return false;
 }
 
 int CourierDatabase::getShortestRouteDistance(const QString& source, const QString& destination) const {

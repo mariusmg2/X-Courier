@@ -41,7 +41,6 @@ void ConfirmationWindow::printDataToWindow() const {
 
     ui->code->setText(QString::number(client.getPackage().getCode()));
     ui->date->setText(QDate::currentDate().addDays(route.getTransitTime()).toString());
-    ui->type_2->setText("UNDEFINED"); // TODO: fix this problem.
     ui->price->setText(QString::number(route.getTotalPriceWithPackage(client.getPackage())));
 
     ui->status->setText("");

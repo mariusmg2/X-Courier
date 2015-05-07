@@ -56,6 +56,9 @@
         <property name="text">
          <string>First name</string>
         </property>
+        <property name="buddy">
+         <cstring>client_fname_line</cstring>
+        </property>
        </widget>
        <widget class="QLabel" name="client_lname">
         <property name="geometry">
@@ -69,6 +72,9 @@
         <property name="text">
          <string>Last name</string>
         </property>
+        <property name="buddy">
+         <cstring>client_lname_line</cstring>
+        </property>
        </widget>
        <widget class="QLabel" name="client_pkg_destination">
         <property name="geometry">
@@ -80,7 +86,10 @@
          </rect>
         </property>
         <property name="text">
-         <string>Package destination</string>
+         <string>Pac&amp;kage destination</string>
+        </property>
+        <property name="buddy">
+         <cstring>client_destination_combo</cstring>
         </property>
        </widget>
        <widget class="QLabel" name="client_email">
@@ -95,6 +104,9 @@
         <property name="text">
          <string>Email</string>
         </property>
+        <property name="buddy">
+         <cstring>client_email_line</cstring>
+        </property>
        </widget>
        <widget class="QLabel" name="client_phone">
         <property name="geometry">
@@ -107,6 +119,9 @@
         </property>
         <property name="text">
          <string>Phone number</string>
+        </property>
+        <property name="buddy">
+         <cstring>client_phone_line</cstring>
         </property>
        </widget>
        <widget class="QLineEdit" name="client_fname_line">
@@ -225,7 +240,7 @@
           <x>20</x>
           <y>293</y>
           <width>221</width>
-          <height>41</height>
+          <height>31</height>
          </rect>
         </property>
         <property name="text">
@@ -293,6 +308,9 @@
         <property name="text">
          <string>First name</string>
         </property>
+        <property name="buddy">
+         <cstring>recipient_fname_line</cstring>
+        </property>
        </widget>
        <widget class="QLabel" name="recipient_phone">
         <property name="geometry">
@@ -305,6 +323,9 @@
         </property>
         <property name="text">
          <string>Phone number</string>
+        </property>
+        <property name="buddy">
+         <cstring>recipient_phone_line</cstring>
         </property>
        </widget>
        <widget class="QLabel" name="recipient_email">
@@ -319,6 +340,9 @@
         <property name="text">
          <string>Email</string>
         </property>
+        <property name="buddy">
+         <cstring>recipient_email_line</cstring>
+        </property>
        </widget>
        <widget class="QLabel" name="recipient_lname">
         <property name="geometry">
@@ -331,6 +355,9 @@
         </property>
         <property name="text">
          <string>Last name</string>
+        </property>
+        <property name="buddy">
+         <cstring>recipient_lname_line</cstring>
         </property>
        </widget>
        <widget class="QLineEdit" name="recipient_phone_line">
@@ -374,6 +401,9 @@
         <property name="text">
          <string>Package weight</string>
         </property>
+        <property name="buddy">
+         <cstring>package_weight_line</cstring>
+        </property>
        </widget>
        <widget class="QLabel" name="packageTypeLabel">
         <property name="geometry">
@@ -386,6 +416,9 @@
         </property>
         <property name="text">
          <string>Package type</string>
+        </property>
+        <property name="buddy">
+         <cstring>typeComboBox</cstring>
         </property>
        </widget>
        <widget class="QLineEdit" name="package_weight_line">
@@ -420,6 +453,9 @@
         <property name="text">
          <string>Transport type</string>
         </property>
+        <property name="buddy">
+         <cstring>transportComboBox</cstring>
+        </property>
        </widget>
        <widget class="QComboBox" name="transportComboBox">
         <property name="geometry">
@@ -443,6 +479,9 @@
         <property name="text">
          <string>Package name</string>
         </property>
+        <property name="buddy">
+         <cstring>package_name_line</cstring>
+        </property>
        </widget>
        <widget class="QLineEdit" name="package_name_line">
         <property name="geometry">
@@ -465,6 +504,9 @@
         </property>
         <property name="text">
          <string>Package value</string>
+        </property>
+        <property name="buddy">
+         <cstring>package_value_line</cstring>
         </property>
        </widget>
        <widget class="QLineEdit" name="package_value_line">
@@ -517,6 +559,25 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>client_fname_line</tabstop>
+  <tabstop>client_lname_line</tabstop>
+  <tabstop>client_email_line</tabstop>
+  <tabstop>client_phone_line</tabstop>
+  <tabstop>client_destination_combo</tabstop>
+  <tabstop>recipient_fname_line</tabstop>
+  <tabstop>recipient_lname_line</tabstop>
+  <tabstop>recipient_email_line</tabstop>
+  <tabstop>recipient_phone_line</tabstop>
+  <tabstop>package_name_line</tabstop>
+  <tabstop>package_value_line</tabstop>
+  <tabstop>package_weight_line</tabstop>
+  <tabstop>typeComboBox</tabstop>
+  <tabstop>transportComboBox</tabstop>
+  <tabstop>send</tabstop>
+  <tabstop>status</tabstop>
+  <tabstop>quit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

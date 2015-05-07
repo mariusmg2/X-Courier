@@ -19,20 +19,20 @@ unsigned int Route::getTotalPrice() const {
 float Route::getTotalPriceWithPackage(const Package& pkg) const {
     float temp = this->getTotalPrice();
 
-    temp *= pkg.getWeight();
-    temp *= pkg.getPrice();
+    temp *= ((float)pkg.getWeight() / 2.0);
+    temp *= ((float)pkg.getPrice() / 5.0);
 
     if(pkg.getType().toLower() == "dangerous") {
-        temp *= 2;
+        temp *= 2.2;
     }
     else if(pkg.getType().toLower() == "fragile") {
-        temp *= 3;
+        temp *= 3.3;
     }
     else {
-        temp *= 4;
+        temp *= 4.4;
     }
 
-    return temp / 1000;
+    return temp / 10000;
 }
 
 unsigned int Route::getTransitTime() const {

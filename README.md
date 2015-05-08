@@ -1,5 +1,13 @@
 # X-Courier
 
+X-Courier-alpha-0.1
+
+Known bugs:
+- When in DB are more clients with the same name (or the same client sends multiple packages), status system will show only the 
+first one.
+- There is no class that will cover the transport type (slow/medium/fast). So this option is null, it will not affect the shipping 
+price or delivery date/time.
+
 Task:
 
 # Sistem de management pentru o firma de curierat rapid

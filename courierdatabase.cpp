@@ -156,7 +156,34 @@ int CourierDatabase::getUniqueShippingID() const {
             code_id++;
         }
 
-        return code_id + 74827;
+        return code_id + 74877; //TODO: This is shit, it will be invalid when deleted some records from DB.
     }
     return 0;
+}
+
+void CourierDatabase::updateDatabaseStatus() const {
+    if(this->isOkToUse()) {
+        QDate currentDate = QDate::currentDate();
+        QSqlQuery query(db);
+
+        query.prepare("UPDATE status SET status = :msg WHERE pick_date = :pickdate");
+        query.bindValue(":msg", "Waiting");
+        query.bindValue(":pickdate", currentDate.toString("dd.MMM.yyyy"));
+
+        query.exec();
+
+        QSqlQuery query2(db);
+
+        query2.prepare("UPDATE status SET status = :msg WHERE pick_date = :pickdate"
+                       " OR pick_date = :pickdate2 OR pick_date = :pickdate3"
+                       " OR pick_date = :pickdate4 or pick_date = :pickdate5");
+        query2.bindValue(":msg", "Returning");
+        query2.bindValue(":pickdate", currentDate.addDays(-1).toString("dd.MMM.yyyy"));
+        query2.bindValue(":pickdate2", currentDate.addDays(-2).toString("dd.MMM.yyyy"));
+        query2.bindValue(":pickdate3", currentDate.addDays(-3).toString("dd.MMM.yyyy"));
+        query2.bindValue(":pickdate4", currentDate.addDays(-4).toString("dd.MMM.yyyy"));
+        query2.bindValue(":pickdate5", currentDate.addDays(-5).toString("dd.MMM.yyyy"));
+
+        query2.exec();
+    }
 }

@@ -37,6 +37,7 @@ void StatusInfoWindow::clearWindowData() const {
 }
 
 void StatusInfoWindow::newDataEntered(const QString& data) {
+    db.updateDatabaseStatus();
     QVector<QString> infoData = db.getPackageStatus(data);
 
     for(auto i : infoData) {

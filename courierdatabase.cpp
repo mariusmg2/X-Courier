@@ -134,23 +134,32 @@ int CourierDatabase::getShortestRouteDistance(const QString& source, const QStri
 
         query.exec();
 
+        if(query.isActive()) {
+            qDebug() << "CourierDatabase::getShortestRouteDistance(): Successfully obtained shortest route distance!";
+        }
+        else {
+            qDebug() << "CourierDatabase::getShortestRouteDistance(): OBS: There was a problem...";
+            qDebug() << query.lastError();
+        }
+
        while(query.next()) {
            temp.push_back(query.value(0).toInt());
        }
 
-       int aux = 99999999; // TODO: Fix this shit.
+       int aux = std::numeric_limits<qint32>::max();
 
        for(auto i : temp) {
            if(i < aux) {
                aux = i;
            }
        }
-       return aux != 99999999 ? aux : 0;
+       query.finish();
+       return aux != std::numeric_limits<qint32>::max() ? aux : 0;
     }
     return 0;
 }
 
-int CourierDatabase::getUniqueShippingID() const {
+int CourierDatabase::getUniqueShippingID(int startNo, int multiplyNo) const {
     if(this->isOkToUse()) {
         QSqlQuery query(db);
         int code_id = 0;
@@ -162,7 +171,14 @@ int CourierDatabase::getUniqueShippingID() const {
             code_id++;
         }
 
-        return code_id + 74877; //TODO: This is shit, it will be invalid when deleted some records from DB.
+        int code = code_id + startNo;
+
+        if(!this->shippingExist(code)) {
+            return code;
+        }
+        else {
+            return (code * multiplyNo) - multiplyNo;
+        }
     }
     return 0;
 }

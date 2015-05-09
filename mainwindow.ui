@@ -238,9 +238,9 @@
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>293</y>
+          <y>303</y>
           <width>221</width>
-          <height>31</height>
+          <height>16</height>
          </rect>
         </property>
         <property name="text">
@@ -576,7 +576,7 @@
   </widget>
   <action name="actionAdd_route">
    <property name="text">
-    <string>Add route</string>
+    <string>&amp;Add route</string>
    </property>
   </action>
  </widget>

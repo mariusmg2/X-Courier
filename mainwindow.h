@@ -14,6 +14,7 @@
 #include "transtype.h"
 #include "pkgtype.h"
 #include "courierdatabase.h"
+#include "routewindow.h"
 
 namespace Ui {
     class MainWindow;
@@ -28,10 +29,12 @@ private slots:
     void on_status_clicked();
     void on_send_clicked();
     bool allDataValid() const;
+    void onAddRouteClicked();
 private:
     QSharedPointer<Ui::MainWindow> ui;
     QSharedPointer<PackageStatusWindow> status_ui;
     QSharedPointer<ConfirmationWindow> confirmation_ui;
+    QSharedPointer<RouteWindow> addroute_ui;
     QSharedPointer<CourierDatabase> database;
 };
 

@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->quit, SIGNAL(clicked()), this, SLOT(close()));
     connect(ui->status, SIGNAL(clicked()), this, SLOT(on_status_clicked()));
     connect(ui->send, SIGNAL(clicked()), this, SLOT(on_send_clicked()));
+    connect(ui->actionAdd_route, SIGNAL(triggered(bool)), this, SLOT(onAddRouteClicked()));
 
     for(auto i : {"Fast", "Medium", "Slow"}) {
         ui->transportComboBox->addItem(i);
@@ -30,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->client_destination_combo->addItem(i);
     }
 
-    ui->status_2->setText("Welcome to X-Courier.\nWow, such bullshit, many thanks...");
+    ui->status_2->setText("Welcome to X-Courier!");
 }
 
 MainWindow::~MainWindow() {
@@ -104,4 +105,12 @@ void MainWindow::on_send_clicked() {
     else {
         ui->status_2->setText("Wow, many mistakes, such invalid\ndata...");
     }
+}
+
+void MainWindow::onAddRouteClicked() {
+    if(!addroute_ui) {
+        addroute_ui = QSharedPointer<RouteWindow>(new RouteWindow);
+    }
+
+    addroute_ui->show();
 }

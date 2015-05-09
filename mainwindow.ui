@@ -10,19 +10,19 @@
     <x>0</x>
     <y>0</y>
     <width>550</width>
-    <height>400</height>
+    <height>420</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>550</width>
-    <height>400</height>
+    <height>420</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>550</width>
-    <height>400</height>
+    <height>420</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -70,7 +70,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>Last name</string>
+         <string>&amp;Last name</string>
         </property>
         <property name="buddy">
          <cstring>client_lname_line</cstring>
@@ -102,7 +102,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>Email</string>
+         <string>E&amp;mail</string>
         </property>
         <property name="buddy">
          <cstring>client_email_line</cstring>
@@ -354,7 +354,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>Last name</string>
+         <string>Last &amp;name</string>
         </property>
         <property name="buddy">
          <cstring>recipient_lname_line</cstring>
@@ -503,7 +503,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>Package value</string>
+         <string>Package &amp;value</string>
         </property>
         <property name="buddy">
          <cstring>package_value_line</cstring>
@@ -529,7 +529,7 @@
       <x>10</x>
       <y>370</y>
       <width>531</width>
-      <height>21</height>
+      <height>24</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="bottomLayout">
@@ -557,6 +557,28 @@
     </layout>
    </widget>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>550</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuOthers">
+    <property name="title">
+     <string>Othe&amp;rs</string>
+    </property>
+    <addaction name="actionAdd_route"/>
+   </widget>
+   <addaction name="menuOthers"/>
+  </widget>
+  <action name="actionAdd_route">
+   <property name="text">
+    <string>Add route</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>

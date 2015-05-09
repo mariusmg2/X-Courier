@@ -49,7 +49,7 @@ void ConfirmationWindow::printDataToWindow() const {
 void ConfirmationWindow::insertDataInDB() const {
     bool ok = database->insertShippingIntoDatabase(client, recipient, route);
 
-    ui->status->setText(ok ? "Succesfully added in DB! Exiting..." : "There was an error :(. Exiting.. ");
+    ui->status->setText(ok ? "  Succesfully added in DB! Exiting..." : "  There was an error :(. Exiting.. ");
     qApp->processEvents(); // This is for updating the QLabel imediatlly after setText() method.
     QThread::sleep(2);
 

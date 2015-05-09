@@ -11,7 +11,8 @@ RouteWindow::RouteWindow(QWidget *parent) :
     connect(ui->addButton, SIGNAL(clicked()), this, SLOT(onAddButtonClicked()));
     connect(ui->addButton, SIGNAL(clicked()), this, SLOT(close()));
 
-    for(auto i : database->getAllDestinations()) {
+    QVector<QString> temp = database->getAllDestinations();
+    for(auto i : temp) {
         ui->sourceComboBox->addItem(i);
         ui->destComboBox->addItem(i);
     }

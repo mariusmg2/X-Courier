@@ -209,11 +209,11 @@ void CourierDatabase::updateDatabaseStatus() const {
                        " OR pick_date = :pickdate2 OR pick_date = :pickdate3"
                        " OR pick_date = :pickdate4 or pick_date = :pickdate5");
         query2.bindValue(":msg", "Returning");
-        query2.bindValue(":pickdate", currentDate.addDays(-1).toString("dd.MMM.yyyy"));
-        query2.bindValue(":pickdate2", currentDate.addDays(-2).toString("dd.MMM.yyyy"));
-        query2.bindValue(":pickdate3", currentDate.addDays(-3).toString("dd.MMM.yyyy"));
-        query2.bindValue(":pickdate4", currentDate.addDays(-4).toString("dd.MMM.yyyy"));
-        query2.bindValue(":pickdate5", currentDate.addDays(-5).toString("dd.MMM.yyyy"));
+        query2.bindValue(":pickdate", currentDate.addDays(-3).toString("dd.MMM.yyyy"));
+        query2.bindValue(":pickdate2", currentDate.addDays(-4).toString("dd.MMM.yyyy"));
+        query2.bindValue(":pickdate3", currentDate.addDays(-5).toString("dd.MMM.yyyy"));
+        query2.bindValue(":pickdate4", currentDate.addDays(-6).toString("dd.MMM.yyyy"));
+        query2.bindValue(":pickdate5", currentDate.addDays(-7).toString("dd.MMM.yyyy"));
 
         query2.exec();
 
@@ -221,10 +221,10 @@ void CourierDatabase::updateDatabaseStatus() const {
 
         query3.prepare("DELETE FROM status WHERE pick_date = :p1 OR pick_date = :p2 OR"
                        " pick_date = :p3 OR pick_date = :p4");
-        query3.bindValue(":p1", currentDate.addDays(-6).toString("dd.MMM.yyyy"));
-        query3.bindValue(":p2", currentDate.addDays(-7).toString("dd.MMM.yyyy"));
-        query3.bindValue(":p3", currentDate.addDays(-8).toString("dd.MMM.yyyy"));
-        query3.bindValue(":p4", currentDate.addDays(-9).toString("dd.MMM.yyyy"));
+        query3.bindValue(":p1", currentDate.addDays(-8).toString("dd.MMM.yyyy"));
+        query3.bindValue(":p2", currentDate.addDays(-9).toString("dd.MMM.yyyy"));
+        query3.bindValue(":p3", currentDate.addDays(-10).toString("dd.MMM.yyyy"));
+        query3.bindValue(":p4", currentDate.addDays(-11).toString("dd.MMM.yyyy"));
 
         query3.exec();
 

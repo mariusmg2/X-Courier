@@ -105,11 +105,17 @@ bool CourierDatabase::insertShippingIntoDatabase(const Client& client, const Cli
             query.bindValue(":pick_date", route.getPickUpDate().toString("dd.MMM.yyyy"));
 
             query.exec();
-            qDebug() << "Client successfully added in database.";
-            return true;
+
+            if(query.isActive()) {
+                qDebug() << "CourierDatabase::insertShippingIntoDatabase(): Client successfully added in database.";
+                query.finish();
+                return true;
+            }
+            qDebug() << "CourierDatabase::insertShippingIntoDatabase(): There was some error: " << query.lastError();
+            return false;
         }
         else {
-            qDebug() << "This shipping already exists in DB.";
+            qDebug() << "CourierDatabase::insertShippingIntoDatabase(): This shipping already exists in DB.";
             return false;
         }
     }
@@ -185,5 +191,37 @@ void CourierDatabase::updateDatabaseStatus() const {
         query2.bindValue(":pickdate5", currentDate.addDays(-5).toString("dd.MMM.yyyy"));
 
         query2.exec();
+
+        if(query.isActive() && query2.isActive()) {
+            qDebug() << "CourierDatabase::updateDatabaseStatus(): DB Successfully updated!";
+            query.finish();
+            query2.finish();
+        }
+        else {
+            qDebug() << "CourierDatabase::updateDatabaseStatus(): OBS: There was an error updating DB...";
+        }
     }
+}
+
+bool CourierDatabase::addRoute(const QString& source, const QString& destination, int distance) {
+    if(this->isOkToUse()) {
+        QSqlQuery query(db);
+
+        query.prepare("INSERT INTO routes (startpoint, endpoint, distance) VALUES"
+                      " (:startpoint, :endpoint, :distance)");
+
+        query.bindValue(":startpoint", source.toUpper());
+        query.bindValue(":endpoint", destination.toUpper());
+        query.bindValue(":distance", distance);
+
+        query.exec();
+        if(query.isActive()) {
+            qDebug() << "CourierDatabase::addRoute(): Route " << source.toUpper() << " - " << destination.toUpper() << " successfully added!";
+            query.finish();
+            return true;
+        }
+        qDebug() << "CourierDatabase::addRoute(): There was some errors: " << query.lastError();
+        return false;
+    }
+    return false;
 }

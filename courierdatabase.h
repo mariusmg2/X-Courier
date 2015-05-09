@@ -38,6 +38,7 @@ public:
     int getShortestRouteDistance(const QString&, const QString&) const;
     int getUniqueShippingID() const; // Pseudorandom shipping ID status.
     void updateDatabaseStatus() const;
+    bool addRoute(const QString&, const QString&, int);
 private:
     QSqlDatabase db;
 };

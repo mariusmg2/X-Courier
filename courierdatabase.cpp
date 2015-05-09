@@ -183,6 +183,15 @@ int CourierDatabase::getUniqueShippingID(int startNo, int multiplyNo) const {
     return 0;
 }
 
+/**
+ * @brief CourierDatabase::updateDatabaseStatus
+ * This method (with all this system implementation) will work only if the database will
+ * be updated once in 10 days.
+ * If not, there will remain some records that this method will not delete them.
+ * One possible fix: change **pick_date** (the date when the package will arrive at some
+ * center) representation with some kinda number, so I can compare more easy.
+ */
+
 void CourierDatabase::updateDatabaseStatus() const {
     if(this->isOkToUse()) {
         QDate currentDate = QDate::currentDate();
@@ -196,7 +205,7 @@ void CourierDatabase::updateDatabaseStatus() const {
 
         QSqlQuery query2(db);
 
-        query2.prepare("UPDATE status SET status = :msg WHERE pick_date = :pickdate"
+        query2.prepare("UPDATE status SET status = :msg, price = price * 2 WHERE pick_date = :pickdate"
                        " OR pick_date = :pickdate2 OR pick_date = :pickdate3"
                        " OR pick_date = :pickdate4 or pick_date = :pickdate5");
         query2.bindValue(":msg", "Returning");
@@ -208,10 +217,22 @@ void CourierDatabase::updateDatabaseStatus() const {
 
         query2.exec();
 
-        if(query.isActive() && query2.isActive()) {
+        QSqlQuery query3(db);
+
+        query3.prepare("DELETE FROM status WHERE pick_date = :p1 OR pick_date = :p2 OR"
+                       " pick_date = :p3 OR pick_date = :p4");
+        query3.bindValue(":p1", currentDate.addDays(-6).toString("dd.MMM.yyyy"));
+        query3.bindValue(":p2", currentDate.addDays(-7).toString("dd.MMM.yyyy"));
+        query3.bindValue(":p3", currentDate.addDays(-8).toString("dd.MMM.yyyy"));
+        query3.bindValue(":p4", currentDate.addDays(-9).toString("dd.MMM.yyyy"));
+
+        query3.exec();
+
+        if(query.isActive() && query2.isActive() && query3.isActive()) {
             qDebug() << "CourierDatabase::updateDatabaseStatus(): DB Successfully updated!";
             query.finish();
             query2.finish();
+            query3.finish();
         }
         else {
             qDebug() << "CourierDatabase::updateDatabaseStatus(): OBS: There was an error updating DB...";

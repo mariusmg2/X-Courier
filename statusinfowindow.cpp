@@ -17,6 +17,10 @@ StatusInfoWindow::~StatusInfoWindow() {
     qDebug().nospace() << "~StatusInfoWindow()";
 }
 
+/**
+ * @brief StatusInfoWindow::clearWindowData Method used to clear all labels from the StatusInfoWindow.
+ */
+
 void StatusInfoWindow::clearWindowData() const {
     ui->label->setText("");
     ui->label_2->setText("");
@@ -35,6 +39,13 @@ void StatusInfoWindow::clearWindowData() const {
     ui->label_13->setText("");
     ui->label_14->setText("");
 }
+
+/**
+ * @brief StatusInfoWindow::newDataEntered Method that will be called when the bbuttonCheckClicked()
+ *        signal is emited (from PackageStatusWindow), it will retrive the data from database
+ *        (based on the data emited), and print it on the window.
+ * @param data - QString representing a name/code.
+ */
 
 void StatusInfoWindow::newDataEntered(const QString& data) {
     db.updateDatabaseStatus();

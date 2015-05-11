@@ -39,12 +39,20 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     ui->status_2->setText("Welcome to X-Courier!");
+    // TODO: Fill QLines with temporar data, (or more like exampes of valid data).
 }
 
 MainWindow::~MainWindow() {
     qDebug().nospace() << "~MainWindow()";
     //ui.clear();
 }
+
+/**
+ * @brief MainWindow::allDataValid Method that checks if all input data is valid data (eg. email
+ *       fields contain at least one '@' and '.' character, phone numbers are only digits, etc).
+ * @return Will return true if all data is valid, and it can be safetly added into database.
+ *         Otherwisw, false will be returned.
+ */
 
 bool MainWindow::allDataValid() const {
     QRegExp phoneREX("\\d*");  // a digit (\d), zero or more times (*)
@@ -65,12 +73,24 @@ bool MainWindow::allDataValid() const {
     return true;
 }
 
+/**
+ * @brief MainWindow::on_status_clicked Method that will be called when the 'status' button will
+ *        be clicked, then it will call show() method on **status_ui** window.
+ */
+
 void MainWindow::on_status_clicked() {
     if(!status_ui) {
         status_ui = QSharedPointer<PackageStatusWindow>(new PackageStatusWindow);
     }
     status_ui->show();
 }
+
+/**
+ * @brief MainWindow::on_send_clicked Method that will be called when 'send' button will be clicked.
+ *        If all data is valid (from MainWindow QLines), then it will retrive all info from them,
+ *        and store it into specific objects. After all of this, it will send all this new objects
+ *        to a confirmation window (using setData() method from that class).
+ */
 
 void MainWindow::on_send_clicked() {
     if(this->allDataValid()) {
@@ -113,6 +133,11 @@ void MainWindow::on_send_clicked() {
         ui->status_2->setText("Sorry! Invalid data...");
     }
 }
+
+/**
+ * @brief MainWindow::onAddRouteClicked Method that will be called when the 'Add route' menu option will
+ *        be clicked, then it will call show() (to display that window) method on **addroute_ui** window.
+ */
 
 void MainWindow::onAddRouteClicked() {
     if(!addroute_ui) {

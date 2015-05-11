@@ -19,6 +19,13 @@ PackageStatusWindow::~PackageStatusWindow() {
     //ui.clear();
 }
 
+/**
+ * @brief PackageStatusWindow::recipientCodeTextChanged Method that will be called when some user
+ *        inserts something in the code QLine from PackageStatusWindow window. This will disable
+ *        (QLine will be inactive) the name QLine.
+ *        It is used because we only need just one information (name or code), and not both!
+ */
+
 void PackageStatusWindow::recipientCodeTextChanged() {
     if(ui->recipientName->text().isEmpty() && !ui->recipientCode->text().isEmpty()) {
         ui->recipientName->setDisabled(true);
@@ -27,6 +34,13 @@ void PackageStatusWindow::recipientCodeTextChanged() {
         ui->recipientName->setEnabled(true);
     }
 }
+
+/**
+ * @brief PackageStatusWindow::recipientNameTextChanged Method that will be called when some user
+ *        inserts something in the name QLine from PackageStatusWindow window. This will disable
+ *        (QLine will be inactive) the code QLine.
+ *        It is used because we only need just one information (name or code), and not both!
+ */
 
 void PackageStatusWindow::recipientNameTextChanged() {
     if(ui->recipientCode->text().isEmpty() && !ui->recipientName->text().isEmpty()) {
@@ -37,8 +51,15 @@ void PackageStatusWindow::recipientNameTextChanged() {
     }
 }
 
+/**
+ * @brief PackageStatusWindow::check_clicked Signal that will be emited when 'check' button is
+ *        pressed. It will emit the inserted name or code, and show the StatusInfoWindow window.
+ *        At that other side, in StatusInfoWindow is a method that will be called with the data
+ *        emited by this signal.
+ */
+
 void PackageStatusWindow::check_clicked() {
-    if(!ui->recipientCode->text().isEmpty() || !ui->recipientName->text().isEmpty()) { // We don't work for void clients :))
+    if(!ui->recipientCode->text().isEmpty() || !ui->recipientName->text().isEmpty()) {
         if(!ui->recipientName->text().isEmpty()) {
            emit buttonCheckClicked(ui->recipientName->text());
         }

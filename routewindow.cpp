@@ -23,6 +23,12 @@ RouteWindow::~RouteWindow() {
     //delete ui;
 }
 
+/**
+ * @brief RouteWindow::onAddButtonClicked Method that is called when user clicks on 'add' button,
+ *        the method will retrive data from comboBox, and call the appropriate **database** method,
+ *        for adding that data into db.
+ */
+
 void RouteWindow::onAddButtonClicked() {
     Route temp;
 

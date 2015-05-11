@@ -25,10 +25,10 @@ class MainWindow : public QMainWindow {
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    bool allDataValid() const;
 private slots:
     void on_status_clicked();
     void on_send_clicked();
-    bool allDataValid() const;
     void onAddRouteClicked();
 private:
     QSharedPointer<Ui::MainWindow> ui;

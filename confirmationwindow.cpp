@@ -1,6 +1,12 @@
 #include "confirmationwindow.h"
 #include "ui_confirmationwindow.h"
 
+/**
+ * @brief ConfirmationWindow::ConfirmationWindow Class constructor, will initialize all data members
+ *        OBS: client, recipient, and route will all be default-constructed (they all have one default
+ *        constructor).
+ */
+
 ConfirmationWindow::ConfirmationWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(QSharedPointer<Ui::ConfirmationWindow>(new Ui::ConfirmationWindow)),
@@ -20,6 +26,14 @@ ConfirmationWindow::~ConfirmationWindow() {
     //ui.clear();
 }
 
+/**
+ * @brief ConfirmationWindow::setData Method used to store information from MainWindow class in
+ *        ConfirmationWindow class, there are actually 3 members that will recive values.
+ * @param client_p - Will store data about one client.
+ * @param recipient_p - Will store data about the recipient.
+ * @param route_p - Data about route.
+ */
+
 void ConfirmationWindow::setData(const Client& client_p, const Client& recipient_p, const Route& route_p) {
     client = client_p;
     recipient = recipient_p;
@@ -28,6 +42,11 @@ void ConfirmationWindow::setData(const Client& client_p, const Client& recipient
     // Print data in window.
     this->printDataToWindow();
 }
+
+/**
+ * @brief ConfirmationWindow::printDataToWindow Method used to print information from ConfirmationWindow
+ *        class data members, to the user-interface window.
+ */
 
 void ConfirmationWindow::printDataToWindow() const {
     ui->fname->setText(client.getFirstName());
@@ -46,6 +65,12 @@ void ConfirmationWindow::printDataToWindow() const {
     ui->status->setText("");
 }
 
+/**
+ * @brief ConfirmationWindow::insertDataInDB Method used for inserting one shipping into database.
+ *        This is done by using the **database** member variable (calling insertShippingIntoDatabase()
+ *        from CourierDatabase class).
+ */
+
 void ConfirmationWindow::insertDataInDB() const {
     bool ok = database->insertShippingIntoDatabase(client, recipient, route);
 
@@ -53,5 +78,5 @@ void ConfirmationWindow::insertDataInDB() const {
     qApp->processEvents(); // This is for updating the QLabel imediatlly after setText() method.
     QThread::sleep(2);
 
-    qDebug() << "insertDataInDB(): Successfully inserted in DB";
+    qDebug() << (ok ? "insertDataInDB(): Successfully inserted into DB!" : "insertDataInDB(): Failed inserting into DB :(");
 }

@@ -6,6 +6,13 @@
 #include "pkgtype.h"
 #include "route.h"
 
+/**
+ * @brief MainWindow::MainWindow Constructor, will initialize all MainWindow objects.
+ *        Initialization consists in: setting member objects with default values (ui, database),
+ *        connecting all buttons (with specific signals) to specific
+ *        slots (methods), and filling all comboBoxes with specific data.
+ */
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(QSharedPointer<Ui::MainWindow>(new Ui::MainWindow)),

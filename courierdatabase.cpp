@@ -1,12 +1,30 @@
 #include "courierdatabase.h"
 
+/**
+ * @brief CourierDatabase::isOpen Wrapper method, used for simplify some calls. It will check
+ *        if database is open.
+ * @return If db is opened true will be returned, otherwise false is returned.
+ */
+
 bool CourierDatabase::isOpen() const {
     return db.isOpen();
 }
 
+/**
+ * @brief CourierDatabase::isOkToUse Wrapper method, used for simplify some calls. It will check
+ *        if database is open and is valid.
+ * @return If db is opened and valid, true will be returned, otherwise false is returned.
+ */
+
 bool CourierDatabase::isOkToUse() const {
     return db.isOpen() && db.isValid();
 }
+
+/**
+ * @brief CourierDatabase::shippingExist Method that checks if **code** value exists in db as a shipping ID.
+ * @param code - Represents shipping code.
+ * @return Will return true if shipping with **code** ID exists in DB, otherwise, false will be returned.
+ */
 
 bool CourierDatabase::shippingExist(int code) const {
     if(this->isOkToUse()) {
@@ -22,15 +40,33 @@ bool CourierDatabase::shippingExist(int code) const {
     return false;
 }
 
+/**
+ * @brief CourierDatabase::getAbsoluteDatabaseFilePath Method that will retrive the URI of database.
+ * @return Will return a QString, representing the URI to the actual used database file.
+ */
+
 QString CourierDatabase::getAbsoluteDatabaseFilePath() const {
     QFileInfo checkFile(db.databaseName());
     return checkFile.absoluteFilePath();
 }
 
+/**
+ * @brief CourierDatabase::getError Method that will get the last error from a prev. query applied
+ *        to the current database.
+ * @return A QString, containing the error message.
+ */
+
 QString CourierDatabase::getError() const {
     QSqlQuery query(db);
     return query.lastError().driverText();
 }
+
+/**
+ * @brief CourierDatabase::getAllDestinations Method used for getting all the route destinations from db.
+ * @return Will return a reference to a QVector of QString, representing all the destinations.
+ *         OBS: The QVector is dinamically allocated, so it must be deleted by the method caller user,
+ *         otherwise memory leak will occur.
+ */
 
 QVector<QString>& CourierDatabase::getAllDestinations() const {
     QVector<QString> *destinations = new QVector<QString>;
@@ -49,6 +85,14 @@ QVector<QString>& CourierDatabase::getAllDestinations() const {
 
     return *destinations;
 }
+
+/**
+ * @brief CourierDatabase::getPackageStatus Method used for getting a package status from db.
+ * @param nameORcode - Representing the name or the shipping id of a potential client.
+ * @return If there is a client with name or code **nameORcode, the method will return
+ *         a QVector of QString representing all information, otherwise, only the first element
+ *         of QVector will contain a specific message, ("No such client in database.").
+ */
 
 QVector<QString> CourierDatabase::getPackageStatus(const QString& nameORcode) const {
     QVector<QString> result;
@@ -74,6 +118,15 @@ QVector<QString> CourierDatabase::getPackageStatus(const QString& nameORcode) co
     }
     return result;
 }
+
+/**
+ * @brief CourierDatabase::insertShippingIntoDatabase Method used for inserting one shipping into database.
+ * @param client - Containing informations acout the person who sends the package.
+ * @param recipient - Containing info. about the pers. that will recive the package.
+ * @param route - Containing info. about the route that the package will be sent.
+ * @return On success (shipping was successfully added into database) true will be returned.
+ *         Otherwise (database is not opened, or is corrupt, or any other reasons), false will be returned.
+ */
 
 bool CourierDatabase::insertShippingIntoDatabase(const Client& client, const Client& recipient, const Route& route) {
     if(this->isOkToUse()) {
@@ -122,6 +175,14 @@ bool CourierDatabase::insertShippingIntoDatabase(const Client& client, const Cli
     return false;
 }
 
+/**
+ * @brief CourierDatabase::getShortestRouteDistance Method used to get the shortest distance between two towns.
+ * @param source - Param. that will contain the name of the first town.
+ * @param destination - Param. with the name of the second town.
+ * @return On success, will return one integer value, representing the shortest distance between this two towns.
+ *         Otherwise (database problems) 0 will be returned.
+ */
+
 int CourierDatabase::getShortestRouteDistance(const QString& source, const QString& destination) const {
     if(this->isOkToUse()) {
         QVector<int> temp;
@@ -158,6 +219,14 @@ int CourierDatabase::getShortestRouteDistance(const QString& source, const QStri
     }
     return 0;
 }
+
+/**
+ * @brief CourierDatabase::getUniqueShippingID Used for getting pseudorandom numbers (integers)
+ *        that will be used as shipping IDs. Numbers are generated based on number of existing
+ *        active shippings.
+ * @param startNo, multiplyNo - Param. used for getting bigger numbers.
+ * @return Will return one integer, representing a unique shipping ID.
+ */
 
 int CourierDatabase::getUniqueShippingID(int startNo, int multiplyNo) const {
     if(this->isOkToUse()) {
@@ -239,6 +308,14 @@ void CourierDatabase::updateDatabaseStatus() const {
         }
     }
 }
+
+/**
+ * @brief CourierDatabase::addRoute Used for inserting routes into database.
+ * @param source
+ * @param destination
+ * @param distance
+ * @return Will return true if everything was ok, otherwise (database/query problems), false is returned.
+ */
 
 bool CourierDatabase::addRoute(const QString& source, const QString& destination, int distance) {
     if(this->isOkToUse()) {

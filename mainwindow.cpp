@@ -39,7 +39,18 @@ MainWindow::MainWindow(QWidget *parent) :
     }
 
     ui->status_2->setText("Welcome to X-Courier!");
-    // TODO: Fill QLines with temporar data, (or more like exampes of valid data).
+
+    ui->client_fname_line->setPlaceholderText("e.g. Brian");
+    ui->client_lname_line->setPlaceholderText("e.g. Griffin");
+    ui->client_email_line->setPlaceholderText("e.g. brian.grf@php.net");
+    ui->client_phone_line->setPlaceholderText("e.g. 0213199054");
+    ui->recipient_fname_line->setPlaceholderText("e.g. Amanda");
+    ui->recipient_lname_line->setPlaceholderText("e.g. Seyfried");
+    ui->recipient_email_line->setPlaceholderText("e.g. amanda@frnet.com");
+    ui->recipient_phone_line->setPlaceholderText("e.g. 0355009777");
+    ui->package_name_line->setPlaceholderText("e.g. guns");
+    ui->package_value_line->setPlaceholderText("e.g. 128");
+    ui->package_weight_line->setPlaceholderText("e.g. 211");
 }
 
 MainWindow::~MainWindow() {
@@ -55,21 +66,163 @@ MainWindow::~MainWindow() {
  */
 
 bool MainWindow::allDataValid() const {
-    QRegExp phoneREX("\\d*");  // a digit (\d), zero or more times (*)
-    QRegExp mailREX("\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
-    mailREX.setCaseSensitivity(Qt::CaseInsensitive);
-    mailREX.setPatternSyntax(QRegExp::RegExp);
-    if(ui->client_fname_line->text().isEmpty() || ui->client_lname_line->text().isEmpty()
-            || ui->client_email_line->text().isEmpty() || ui->client_phone_line->text().isEmpty()
-            || ui->recipient_fname_line->text().isEmpty() || ui->recipient_lname_line->text().isEmpty()
-            || ui->recipient_email_line->text().isEmpty() || ui->recipient_phone_line->text().isEmpty()
-            || ui->package_weight_line->text().isEmpty() || !phoneREX.exactMatch(ui->client_phone_line->text())
-            || !phoneREX.exactMatch(ui->recipient_phone_line->text()) || ui->recipient_phone_line->text().count() < 8
-            || ui->client_phone_line->text().count() < 8 || !mailREX.exactMatch(ui->client_email_line->text())
-            || !mailREX.exactMatch(ui->recipient_email_line->text()) || ui->package_name_line->text().isEmpty()
-            || !phoneREX.exactMatch(ui->package_weight_line->text()) || !phoneREX.exactMatch(ui->package_value_line->text())) {
+    QRegExp digitRegExp("\\d");
+    QRegExp mailRegExp("\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b");
+    QRegExp phoneRegExp("^[0-9]{8,12}$");
+    QRegExp valueRegExp("^[0-9]{1,5}$");
+
+    mailRegExp.setCaseSensitivity(Qt::CaseInsensitive);
+    mailRegExp.setPatternSyntax(QRegExp::RegExp);
+
+    QString clientFirstName = ui->client_fname_line->text();
+    QString clientLastName = ui->client_lname_line->text();
+    QString clientEmail = ui->client_email_line->text();
+    QString clientPhone = ui->client_phone_line->text();
+
+    QString recipientFirstName = ui->recipient_fname_line->text();
+    QString recipientLastName = ui->recipient_lname_line->text();
+    QString recipientEmail = ui->recipient_email_line->text();
+    QString recipientPhone = ui->recipient_phone_line->text();
+
+    QString packageName = ui->package_name_line->text();
+
+    QVector<QString> names;
+    QVector<QString> emails;
+    QVector<QString> phones;
+
+    names.push_back(clientFirstName);
+    names.push_back(clientLastName);
+    names.push_back(recipientFirstName);
+    names.push_back(recipientLastName);
+
+    emails.push_back(clientEmail);
+    emails.push_back(recipientEmail);
+
+    phones.push_back(clientPhone);
+    phones.push_back(recipientPhone);
+
+    // Validating names.
+    for(auto i : names) {
+        if(i.isEmpty()) {
+            ui->status_2->setText("Sorry, names can't be empty!");
+            return false;
+        }
+    }
+
+    for(auto i : names) {
+        if(i.count() < 3) {
+            ui->status_2->setText("One of names is too short!");
+            return false;
+        }
+    }
+
+    for(auto i : names) {
+        if(i.count() > 20) {
+            ui->status_2->setText("One of names is too long!");
+            return false;
+        }
+    }
+
+    for(auto i : names) {
+        if(i.contains(digitRegExp)) {
+            ui->status_2->setText("Names can't contain digits, m8!");
+            return false;
+        }
+    }
+
+    // Validating emails.
+    for(auto i : emails) {
+        if(i.isEmpty()) {
+            ui->status_2->setText("Sorry, emails can't be empty!");
+        }
+    }
+
+    for(auto i : emails) {
+        if(i.count() < 8) {
+            ui->status_2->setText("One of emails is too short!");
+            return false;
+        }
+    }
+
+    for(auto i : emails) {
+        if(i.count() > 50) {
+            ui->status_2->setText("Hmm, one of emails is too way long!");
+            return false;
+        }
+    }
+
+    for(auto i : emails) {
+        if(!mailRegExp.exactMatch(i)) {
+            ui->status_2->setText("One of emails is not an email...");
+            return false;
+        }
+    }
+
+    // Validating phone numbers.
+    for(auto i : phones) {
+        if(i.isEmpty()) {
+            ui->status_2->setText("Sorry, number phones can't be empty!");
+            return false;
+        }
+    }
+
+    for(auto i : phones) {
+        if(i.count() < 8) {
+            ui->status_2->setText("One of number phone is too short!");
+            return false;
+        }
+    }
+
+    for(auto i : phones) {
+        if(i.count() > 12) {
+            ui->status_2->setText("One of number phone is too long!");
+            return false;
+        }
+    }
+
+    for(auto i : phones) {
+        if(!phoneRegExp.exactMatch(i)) {
+            ui->status_2->setText("Hmm, that's not a number! only digits.");
+            return false;
+        }
+    }
+
+    // Validating package details:
+    if(packageName.isEmpty()) {
+        ui->status_2->setText("Package name can't be empty...");
         return false;
     }
+
+    if(packageName.count() < 3) {
+        ui->status_2->setText("Package name is too short!");
+        return false;
+    }
+
+    if(packageName.count() > 30) {
+        ui->status_2->setText("Package name is too long!");
+        return false;
+    }
+
+    if(ui->package_value_line->text().isEmpty()) {
+        ui->status_2->setText("Sorry, package value can't be empty!");
+        return false;
+    }
+
+    if(!valueRegExp.exactMatch(ui->package_value_line->text())) {
+        ui->status_2->setText("Package value can be only digits!");
+        return false;
+    }
+
+    if(ui->package_weight_line->text().isEmpty()) {
+        ui->status_2->setText("Sorry, package weight can't be empty!");
+        return false;
+    }
+
+    if(!valueRegExp.exactMatch(ui->package_weight_line->text())) {
+        ui->status_2->setText("Package weight can be only digits!");
+        return false;
+    }
+
     return true;
 }
 
@@ -128,9 +281,6 @@ void MainWindow::on_send_clicked() {
         ui->status_2->setText("Wow, such valid data, so small price...");
 
         confirmation_ui->show();
-    }
-    else {
-        ui->status_2->setText("Sorry! Invalid data...");
     }
 }
 

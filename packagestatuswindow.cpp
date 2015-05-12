@@ -12,6 +12,9 @@ PackageStatusWindow::PackageStatusWindow(QWidget *parent) :
     connect(ui->recipientName, SIGNAL(textChanged(QString)), this, SLOT(recipientNameTextChanged()));
     connect(ui->checkButton, SIGNAL(clicked()), this, SLOT(check_clicked()));
     connect(this, SIGNAL(buttonCheckClicked(const QString&)), status_ui.data(), SLOT(newDataEntered(const QString&)));
+
+    ui->recipientName->setPlaceholderText("one last name e.g. Seyfried");
+    ui->recipientCode->setPlaceholderText("e.g. 556883");
 }
 
 PackageStatusWindow::~PackageStatusWindow() {
@@ -61,10 +64,14 @@ void PackageStatusWindow::recipientNameTextChanged() {
 void PackageStatusWindow::check_clicked() {
     if(!ui->recipientCode->text().isEmpty() || !ui->recipientName->text().isEmpty()) {
         if(!ui->recipientName->text().isEmpty()) {
-           emit buttonCheckClicked(ui->recipientName->text());
+            QString name = ui->recipientName->text();
+            name.truncate(20);
+            emit buttonCheckClicked(name);
         }
         else {
-           emit buttonCheckClicked(ui->recipientCode->text());
+            QString code = ui->recipientCode->text();
+            code.truncate(20);
+            emit buttonCheckClicked(code);
         }
 
         status_ui->show();

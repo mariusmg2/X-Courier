@@ -38,3 +38,4 @@ private:
 };
 
 #endif // CLIENT_H
+// This file was writed by Cosmin Ghitea.

@@ -99,8 +99,9 @@ QVector<QString> CourierDatabase::getPackageStatus(const QString& nameORcode) co
 
     if(this->isOkToUse()) {
         QSqlQuery query(db);
-        query.prepare("SELECT * FROM status WHERE lname = :lname OR code = :code");
+        query.prepare("SELECT * FROM status WHERE lname = :lname OR r_lname = :r_lname OR code = :code");
         query.bindValue(":lname", nameORcode.toLower());
+        query.bindValue(":r_lname", nameORcode.toLower());
         query.bindValue(":code", nameORcode);
         query.exec();
 

@@ -16,6 +16,12 @@ RouteWindow::RouteWindow(QWidget *parent) :
         ui->sourceComboBox->addItem(i);
         ui->destComboBox->addItem(i);
     }
+
+    ui->sourceComboBox->setCurrentIndex(2);
+    ui->destComboBox->setCurrentIndex(8);
+    ui->destComboBox->removeItem(2);
+
+    ui->spinBox->setValue(57);
 }
 
 RouteWindow::~RouteWindow() {

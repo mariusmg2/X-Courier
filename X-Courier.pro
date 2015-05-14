@@ -7,6 +7,7 @@
 QT       += core gui
 QT       += sql
 CONFIG   += c++14
+QT += printsupport
 QMAKE_CXXFLAGS += -ggdb
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -29,7 +30,8 @@ SOURCES += main.cpp\
     confirmationwindow.cpp \
     courierdatabase.cpp \
     statusinfowindow.cpp \
-    routewindow.cpp
+    routewindow.cpp \
+    invoice.cpp
 
 HEADERS  += mainwindow.h \
     center.h \
@@ -47,7 +49,8 @@ HEADERS  += mainwindow.h \
     courierdatabase.h \
     statusinfowindow.h \
     statustype.h \
-    routewindow.h
+    routewindow.h \
+    invoice.h
 
 FORMS    += mainwindow.ui \
     packagestatuswindow.ui \

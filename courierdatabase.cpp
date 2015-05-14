@@ -209,6 +209,7 @@ int CourierDatabase::getShortestRouteDistance(const QString& source, const QStri
         else {
             qDebug() << "CourierDatabase::getShortestRouteDistance(): OBS: There was a problem...";
             qDebug() << query.lastError();
+            return 0;
         }
 
        while(query.next()) {

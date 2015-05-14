@@ -11,6 +11,7 @@
 #include "client.h"
 #include "route.h"
 #include "package.h"
+#include "invoice.h"
 
 namespace Ui {
     class ConfirmationWindow;
@@ -25,6 +26,8 @@ public:
     void printDataToWindow() const;
 private slots:
     void insertDataInDB() const;
+    void generateInvoice() const;
+    void disableGenerateInvoiceButton() const;
 private:
     QSharedPointer<Ui::ConfirmationWindow> ui;
     QSharedPointer<CourierDatabase> database;

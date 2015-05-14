@@ -16,9 +16,11 @@ ConfirmationWindow::ConfirmationWindow(QWidget *parent) :
     route()
 {
     ui->setupUi(this);
-    connect(ui->denyButton, SIGNAL(clicked()), this, SLOT(close()));
-    connect(ui->acceptButton, SIGNAL(clicked()), this, SLOT(insertDataInDB()));
-    connect(ui->acceptButton, SIGNAL(clicked()), this, SLOT(close()));
+    connect(ui->denyButton, SIGNAL(clicked(bool)), this, SLOT(close()));
+    connect(ui->acceptButton, SIGNAL(clicked(bool)), this, SLOT(insertDataInDB()));
+    connect(ui->acceptButton, SIGNAL(clicked(bool)), this, SLOT(close()));
+    connect(ui->generate, SIGNAL(clicked(bool)), this, SLOT(generateInvoice()));
+    connect(ui->generate, SIGNAL(clicked(bool)), this, SLOT(disableGenerateInvoiceButton()));
 }
 
 ConfirmationWindow::~ConfirmationWindow() {
@@ -63,7 +65,8 @@ void ConfirmationWindow::printDataToWindow() const {
     ui->date->setText(QDate::currentDate().addDays(route.getTransitTime()).toString());
     ui->price->setText(QString::number(route.getTotalPriceWithPackage(client.getPackage())));
 
-    ui->status->setText("");
+    ui->status->clear();
+    ui->generate->setEnabled(1);
 }
 
 /**
@@ -81,9 +84,18 @@ void ConfirmationWindow::insertDataInDB() const {
 
     bool ok = database->insertShippingIntoDatabase(client, recipient, route, temp);
 
-    ui->status->setText(ok ? "  Succesfully added in DB! Exiting..." : "  There was an error :(. Exiting.. ");
+    ui->status->setText(ok ? "  Succesfully added in DB! Exiting..." : "  There was an error :(. Exiting... ");
     qApp->processEvents(); // This is for updating the QLabel imediatlly after setText() method.
     QThread::sleep(2);
 
     qDebug() << (ok ? "insertDataInDB(): Successfully inserted into DB!" : "insertDataInDB(): Failed inserting into DB :(");
+}
+
+void ConfirmationWindow::generateInvoice() const {
+    Invoice::generateInvoice(client, recipient, route);
+    ui->status->setText("  Successfully generated!");
+}
+
+void ConfirmationWindow::disableGenerateInvoiceButton() const {
+    ui->generate->setDisabled(1);
 }

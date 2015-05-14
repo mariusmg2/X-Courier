@@ -106,7 +106,7 @@ QVector<QString> CourierDatabase::getPackageStatus(const QString& nameORcode) co
         query.exec();
 
         if(query.first()) {
-            for(int i = 0; i < 16; i++) {
+            for(int i = 0; i < 18; i++) {
                 result.push_back(query.value(i).toString());
             }
         }
@@ -129,13 +129,13 @@ QVector<QString> CourierDatabase::getPackageStatus(const QString& nameORcode) co
  *         Otherwise (database is not opened, or is corrupt, or any other reasons), false will be returned.
  */
 
-bool CourierDatabase::insertShippingIntoDatabase(const Client& client, const Client& recipient, const Route& route) {
+bool CourierDatabase::insertShippingIntoDatabase(const Client& client, const Client& recipient, const Route& route, bool payment) {
     if(this->isOkToUse()) {
         if(!this->shippingExist(client.getPackage().getCode())) {
             QSqlQuery query(db);
             query.prepare("INSERT INTO status (fname, lname, email, phone, r_fname, r_lname, r_email, r_phone, sourcepoint, endpoint,"
-                          " price, code, name, weight, status, pkgtype, pick_date) VALUES (:fname, :lname, :email, :phone, :r_fname, :r_lname,"
-                          " :r_email, :r_phone, :sourcepoint, :endpoint, :price, :code, :name, :weight, :status, :pkgtype, :pick_date)");
+                          " price, code, name, weight, status, pkgtype, pick_date, shipping_price) VALUES (:fname, :lname, :email, :phone, :r_fname, :r_lname,"
+                          " :r_email, :r_phone, :sourcepoint, :endpoint, :price, :code, :name, :weight, :status, :pkgtype, :pick_date, :shippp)");
 
             query.bindValue(":fname", client.getFirstName().toLower());
             query.bindValue(":lname", client.getLastName().toLower());
@@ -157,6 +157,13 @@ bool CourierDatabase::insertShippingIntoDatabase(const Client& client, const Cli
             query.bindValue(":status", client.getPackage().getStatus());
             query.bindValue(":pkgtype", client.getPackage().getType());
             query.bindValue(":pick_date", route.getPickUpDate().toString("dd.MMM.yyyy"));
+
+            if(!payment) {
+                query.bindValue(":shippp", route.getTotalPriceWithPackage(client.getPackage()));
+            }
+            else {
+                query.bindValue(":shippp", 0);
+            }
 
             query.exec();
 

@@ -57,6 +57,7 @@ void ConfirmationWindow::printDataToWindow() const {
     ui->weight->setText(QString::number(client.getPackage().getWeight()));
     ui->type->setText(client.getPackage().getType());
     ui->destination->setText(route.getDestination());
+    ui->arrivetime->setText(QDate::currentDate().addDays(route.getTransitTime()).toString("dd.MMM.yyyy"));
 
     ui->code->setText(QString::number(client.getPackage().getCode()));
     ui->date->setText(QDate::currentDate().addDays(route.getTransitTime()).toString());
@@ -72,7 +73,13 @@ void ConfirmationWindow::printDataToWindow() const {
  */
 
 void ConfirmationWindow::insertDataInDB() const {
-    bool ok = database->insertShippingIntoDatabase(client, recipient, route);
+    bool temp = false;
+
+    if(ui->yes->isChecked()) {
+        temp = true;
+    }
+
+    bool ok = database->insertShippingIntoDatabase(client, recipient, route, temp);
 
     ui->status->setText(ok ? "  Succesfully added in DB! Exiting..." : "  There was an error :(. Exiting.. ");
     qApp->processEvents(); // This is for updating the QLabel imediatlly after setText() method.

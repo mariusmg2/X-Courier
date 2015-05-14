@@ -22,22 +22,26 @@ StatusInfoWindow::~StatusInfoWindow() {
  */
 
 void StatusInfoWindow::clearWindowData() const {
-    ui->label->setText("");
-    ui->label_2->setText("");
-    ui->label_3->setText("");
-    ui->label_4->setText("");
+    ui->label->clear();
+    ui->label_2->clear();
+    ui->label_3->clear();
+    ui->label_4->clear();
 
-    ui->label_5->setText("");
-    ui->label_6->setText("");
-    ui->label_7->setText("");
-    ui->label_8->setText("");
+    ui->label_5->clear();
+    ui->label_6->clear();
+    ui->label_7->clear();
+    ui->label_8->clear();
 
-    ui->label_9->setText("");
-    ui->label_10->setText("");
-    ui->label_11->setText("");
-    ui->label_12->setText("");
-    ui->label_13->setText("");
-    ui->label_14->setText("");
+    ui->label_9->clear();
+    ui->label_10->clear();
+    ui->label_11->clear();
+    ui->label_12->clear();
+    ui->label_13->clear();
+    ui->label_14->clear();
+
+    ui->status1->clear();
+    ui->status2->clear();
+    ui->shippingprice->clear();
 }
 
 /**
@@ -89,9 +93,17 @@ void StatusInfoWindow::newDataEntered(const QString& data) {
         ui->label_11->setText(infoData[6]); // Package price.
         ui->label_12->setText(infoData[4]); // Package source.
         ui->label_13->setText(infoData[0]); // Package status.
-        ui->label_14->setText(infoData[3]); // Pachage code.
+        ui->label_14->setText(infoData[3]); // Package code.
+
+        if(infoData[17].toFloat() == 0.0) {
+            ui->shippingprice->setText("PAID");
+        }
+        else {
+            ui->shippingprice->setText(infoData[17]);
+        }
     }
     else {
-        ui->label->setText("No such client...");
+        ui->status1->setText("Sorry, no such client :(");
+        ui->status2->setText("Sorry, no such client :(");
     }
 }

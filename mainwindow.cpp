@@ -5,6 +5,7 @@
 #include "statustype.h"
 #include "pkgtype.h"
 #include "route.h"
+#include "transtype.h"
 
 /**
  * @brief MainWindow::MainWindow Constructor, will initialize all MainWindow objects.
@@ -251,13 +252,26 @@ void MainWindow::on_send_clicked() {
             confirmation_ui = QSharedPointer<ConfirmationWindow>(new ConfirmationWindow);
         }
 
+        TransType trans;
+        QString transaux = ui->transportComboBox->currentText();
+
+        if(transaux == "Fast") {
+            trans = TransType::fast;
+        }
+        else if(transaux == "Medium") {
+            trans = TransType::medium;
+        }
+        else {
+            trans = TransType::slow;
+        }
+
         Client client(ui->client_fname_line->text(), ui->client_lname_line->text(),
                       ui->client_phone_line->text(), ui->client_email_line->text());
 
         Client recipient(ui->recipient_fname_line->text(), ui->recipient_lname_line->text(),
                          ui->recipient_phone_line->text(), ui->recipient_email_line->text());
 
-        Route route("Timisoara", ui->client_destination_combo->currentText(),
+        Route route("Timisoara", ui->client_destination_combo->currentText(), trans,
                     database->getShortestRouteDistance("Timisoara", ui->client_destination_combo->currentText()));
         PkgType aux;
         QString temp = ui->typeComboBox->currentText();

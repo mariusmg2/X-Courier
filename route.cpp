@@ -23,13 +23,20 @@ float Route::getTotalPriceWithPackage(const Package& pkg) const {
     temp *= ((float)pkg.getPrice() / 5.0);
 
     if(pkg.getType().toLower() == "dangerous") {
-        temp *= 2.2;
+        temp *= 1.2;
     }
     else if(pkg.getType().toLower() == "fragile") {
-        temp *= 3.3;
+        temp *= 2.3;
     }
     else {
-        temp *= 4.4;
+        temp *= 3.4;
+    }
+
+    if(this->getTransportType().toLower() == "fast") {
+        temp *= 3;
+    }
+    else if(this->getTransportType().toLower() == "slow") {
+        temp /= 1.5;
     }
 
     return temp / 10000;
@@ -39,11 +46,14 @@ unsigned int Route::getTransitTime() const {
     if(this->distance <= 100) {
         return 1;
     }
-    else if(this->distance <= 300) {
+    else if(this->distance <= 200) {
         return 2;
     }
-    else {
+    else if(this->distance <= 300) {
         return 3;
+    }
+    else {
+        return 4;
     }
 }
 
@@ -54,6 +64,21 @@ unsigned int Route::getTransitTime() const {
 
 QDate Route::getPickUpDate() const {
     return QDate::currentDate().addDays(this->getTransitTime());
+}
+
+QString Route::getTransportType() const {
+    switch(type) {
+        case TransType::fast:
+            return QString("Fast");
+        case TransType::medium:
+            return QString("Medium");
+        case TransType::slow:
+            return QString("Slow");
+        case TransType::undefined:
+            return QString("Undefined");
+        default:
+            return QString("No Info.");
+    }
 }
 
 void Route::setSource(const QString& source) {

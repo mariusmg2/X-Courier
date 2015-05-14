@@ -6,6 +6,7 @@
 #include <QDebug>
 
 #include "package.h"
+#include "transtype.h"
 
 /**
  * @brief The Route class
@@ -19,9 +20,9 @@
 
 class Route {
 public:
-    Route(): source(QString()), destination(QString()), distance(0), pricePerKm(0) {}
-    Route(const QString& source, const QString& destination, int distance, int pricePerKm = 2): source(source),
-        destination(destination), distance(distance), pricePerKm(pricePerKm) {}
+    Route(): source(QString()), destination(QString()), type(TransType::undefined), distance(0), pricePerKm(0) {}
+    Route(const QString& source, const QString& destination, TransType type, int distance, int pricePerKm = 2): source(source),
+        destination(destination), type(type), distance(distance), pricePerKm(pricePerKm) {}
     virtual ~Route() {}
     virtual QString getSource() const;
     virtual QString getDestination() const;
@@ -30,12 +31,14 @@ public:
     virtual float getTotalPriceWithPackage(const Package&) const;
     virtual unsigned int getTransitTime() const;
     virtual QDate getPickUpDate() const;
+    virtual QString getTransportType() const;
     virtual void setSource(const QString&);
     virtual void setDestination(const QString&);
     virtual void setDistance(int);
 private:
     QString source;
     QString destination;
+    TransType type;
     unsigned int distance;
     unsigned int pricePerKm;
 };

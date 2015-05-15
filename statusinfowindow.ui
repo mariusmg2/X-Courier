@@ -226,6 +226,9 @@
    </widget>
   </widget>
   <widget class="QGroupBox" name="packageBox">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>510</x>

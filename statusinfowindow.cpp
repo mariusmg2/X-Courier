@@ -78,6 +78,10 @@ void StatusInfoWindow::newDataEntered(const QString& data) {
         reciver.setEmail(infoData[13]);
         reciver.setGender(false);
 
+        ui->senderBox->setEnabled(true);
+        ui->recipientBox->setEnabled(true);
+        ui->packageBox->setEnabled(true);
+
         ui->label->setText(sender.getFirstName());      // Sender first name.
         ui->label_2->setText(sender.getLastName());     // Sender last name.
         ui->label_3->setText(sender.getPhone());        // Sender phone number.
@@ -103,7 +107,14 @@ void StatusInfoWindow::newDataEntered(const QString& data) {
         }
     }
     else {
+        ui->status1->setStyleSheet("QLabel { color : red; }");
+        ui->status2->setStyleSheet("QLabel { color : red; }");
+
         ui->status1->setText("Sorry, no such client :(");
         ui->status2->setText("Sorry, no such client :(");
+
+        ui->senderBox->setEnabled(false);
+        ui->recipientBox->setEnabled(false);
+        ui->packageBox->setEnabled(false);
     }
 }

@@ -79,7 +79,7 @@ void ConfirmationWindow::insertDataInDB() const {
     bool temp = false;
 
     if(ui->yes->isChecked()) {
-        temp = true;
+        temp = true; // If is true it means that the package sender will pay. Otherwise, the recipient will pay.
     }
 
     bool ok = database->insertShippingIntoDatabase(client, recipient, route, temp);
@@ -92,7 +92,19 @@ void ConfirmationWindow::insertDataInDB() const {
 }
 
 void ConfirmationWindow::generateInvoice() const {
-    Invoice::generateInvoice(client, recipient, route);
+    auto aux = client;
+    auto aux2 = client.getPackage(); // TODO: setter and getters methods (setName(), setPackage(), setWhatewer()) should return refferences to the new modifyed objects, and not an copy of that value.
+    aux2.setPrice(0);
+
+    aux.setPackage(aux2);
+
+    if(ui->yes->isChecked()) {
+        Invoice::generateInvoice(aux, recipient, route);
+    }
+    else {
+        Invoice::generateInvoice(client, recipient, route);
+    }
+
     ui->status->setText("  Successfully generated!");
 }
 

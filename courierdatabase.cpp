@@ -204,7 +204,8 @@ int CourierDatabase::getShortestRouteDistance(const QString& source, const QStri
         query.exec();
 
         if(query.isActive()) {
-            qDebug() << "CourierDatabase::getShortestRouteDistance(): Successfully obtained shortest route distance!";
+            qDebug() << "CourierDatabase::getShortestRouteDistance(): Successfully obtained shortest route distance! "
+                     << source.toUpper() << " - " << destination.toUpper() << ".";
         }
         else {
             qDebug() << "CourierDatabase::getShortestRouteDistance(): OBS: There was a problem...";
@@ -224,7 +225,7 @@ int CourierDatabase::getShortestRouteDistance(const QString& source, const QStri
            }
        }
        query.finish();
-       return aux != std::numeric_limits<qint32>::max() ? aux : 0;
+       return aux != std::numeric_limits<qint32>::max() ? aux : -1;
     }
     return 0;
 }

@@ -231,6 +231,11 @@ bool MainWindow::allDataValid() const {
         return false;
     }
 
+    if(!database->isOkToUse()) {
+        ui->status_2->setText("DB problem! Are you sure that is valid?");
+        return false;
+    }
+
     return true;
 }
 

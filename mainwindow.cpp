@@ -224,6 +224,13 @@ bool MainWindow::allDataValid() const {
         return false;
     }
 
+    auto distance = database->getShortestRouteDistance("Timisoara", ui->client_destination_combo->currentText());
+
+    if(distance == -1) {
+        ui->status_2->setText("Sorry, no such route :(");
+        return false;
+    }
+
     return true;
 }
 
@@ -271,8 +278,9 @@ void MainWindow::on_send_clicked() {
         Client recipient(ui->recipient_fname_line->text(), ui->recipient_lname_line->text(),
                          ui->recipient_phone_line->text(), ui->recipient_email_line->text());
 
-        Route route("Timisoara", ui->client_destination_combo->currentText(), trans,
-                    database->getShortestRouteDistance("Timisoara", ui->client_destination_combo->currentText()));
+        auto distance = database->getShortestRouteDistance("Timisoara", ui->client_destination_combo->currentText());
+
+        Route route("Timisoara", ui->client_destination_combo->currentText(), trans, distance);
         PkgType aux;
         QString temp = ui->typeComboBox->currentText();
 
